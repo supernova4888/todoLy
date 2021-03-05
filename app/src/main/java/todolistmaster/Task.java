@@ -15,7 +15,7 @@ public class Task {
     private String projectName;
     private boolean taskStatus; // always start as false = "open"
 
-    }
+
 
     // Define getters & setters for each attribute
 

@@ -1,6 +1,4 @@
 package todolistmaster;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,17 +23,17 @@ public class Todolist {
         System.out.println("Welcome to ToDoLy");
         System.out.println("You have " + "X - placeholder" + "tasks todo and " + "Y - placeholder" + "tasks are done!");
         System.out.println("Pick an option:");
-        System.out.println("(" + 1 + ")" + "Show Task List (by date or project)");
-        System.out.println("(" + 2 + ")" + "Add New Task");
-        System.out.println("(" + 3 + ")" + "Edit Task (update, mark as done, remove)");
-        System.out.println("(" + 4 + ")" + "Save and Quit");
+        System.out.println("(1) Show Task List (by date or project)");
+        System.out.println("(2) Add New Task");
+        System.out.println("(3) Edit Task (update, mark as done, remove)");
+        System.out.println("(4) Save and Quit");
 
     }
 
     public void setUserCommand(Integer userOption) {
         userOption = scanner.nextInt();
-
     }
+
 
     public int getUserCommand(Integer userOption) {
         // if loop validating user command as well as connecting to the appropriate course of action
@@ -45,18 +43,35 @@ public class Todolist {
     }
 
 
+    public void isNumber(Integer userOption) {
+
+
+        // pass value to @userOption param if the value is an int
+        // AND the value is between 1-4
+        // do an array
+        while (scanner.hasNextInt() &&
+
+         // pull the .value method to check if nr is between 1-4.
+        }
+
+        // careful with opening and closing the scanner. Keep track of all scanners that i opened.
+        // perhaps encapsulating into a class.
+        scanner.close(); //why close?
+
+
+    }
+
     public void processUserCommand() {
-     //   int[] displayedOptions = {1, 2, 3, 4};
         if (userOption == 1) {
             showTaskList();
         } else if (userOption == 2) {
             addTaskToArrayList();
         } else if (userOption == 3) {
-            // call method edit task
+            break //method to come
         } else if (userOption == 4) {
-            // call save and quit
+            // call save and quit //method to come
         } else {
-            // return error and display options again
+            break
         }
     }
 
