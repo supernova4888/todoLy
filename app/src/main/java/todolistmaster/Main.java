@@ -2,6 +2,9 @@ package todolistmaster;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/** Calls objects and related methods for program execution
+ **/
+
 public class Main {
 
     public static void main(String[] args) {

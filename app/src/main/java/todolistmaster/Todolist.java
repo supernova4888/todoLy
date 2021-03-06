@@ -15,7 +15,7 @@ public class Todolist {
     private int userOption;
     ArrayList<Task> listOfTasks = new ArrayList<>();
     int[] intOptions = new int[] {1,2,3,4};
-    static Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
     public static void printWelcome() {
         System.out.println();
@@ -30,7 +30,7 @@ public class Todolist {
     }
 
     public int setUserCommand() {
-        userOption = scanner.nextInt();
+        return userOption = scanner.nextInt();
     }
 
     public int getUserCommand() {
@@ -48,7 +48,7 @@ public class Todolist {
             System.out.println("Invalid command, please select one of these options: (1), (2), (3), (4)");
             setUserCommand();
         } else {
-            // processUserCommand();
+            processUserCommand();
         }
     }
 
@@ -65,44 +65,51 @@ public class Todolist {
     }
 
 
-    public ArrayList showTaskList() {
+    public void showTaskList() {
         System.out.println(listOfTasks);
     }
 
 
     // Create a task
-    public void addTaskToArrayList(); {
-        Task t = new Task;
+    public void addTaskToArrayList() {
+        Task t = new Task();
         t.createTask();
         listOfTasks.add(t);
 
     }
 
     public void editTask() {
-        // see paper notes
+        System.out.println("Select which task you would like to edit:");
+        showTaskList();
+        int taskNumber = scanner.nextInt();
+        System.out.println(listOfTasks.get(taskNumber - 1));
+        System.out.println("Select which field you would like to edit:");
+        System.out.println("(1) title");
+        System.out.println("(2) Due Date");
+        System.out.println("(3) Project name");
+        System.out.println("(4) Status");
+        int number = scanner.nextInt();
+        switch (number) {
+            case 1:
+                listOfTasks.get(taskNumber - 1).setTitle(scanner.nextLine());
+                break;
+            case 2:
+                listOfTasks.get(taskNumber - 1).setDueDate(scanner.nextLine()); // have to fix this later
+                break;
+            case 3:
+                listOfTasks.get(taskNumber - 1).setProjectName(scanner.nextLine());
+                break;
+            case 4:
+                listOfTasks.get(taskNumber - 1).setStatus(scanner.nextBoolean()); //db if this actually works
+                break;
+        }
     }
-
-    /*public void removeTaskfromArrayList() {
-        // display array
-        // select task by writing the id ?
-        // remove id which removes the entire task
-
-    }*/
 
 
     public void saveQuit() {
+        // save to txt file
+        // exit program
     }
 
 }
 
-
-
-
-
-
-
-
-
-
-
-}

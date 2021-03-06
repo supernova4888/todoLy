@@ -42,7 +42,7 @@ public class Task {
     }
 
 
-    public void setStatus(boolean taskStatus) {
+    public String setStatus(boolean taskStatus) {
         String open;
         String closed;
 
