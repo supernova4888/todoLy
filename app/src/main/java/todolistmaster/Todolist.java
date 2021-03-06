@@ -1,21 +1,20 @@
 package todolistmaster;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
-Saves taks into an Arraylist (adds)
+ This is the core of the TodoLy command-line todolist app. It is divided in two parts. The first part display instructions,
+ takes and validates user input. The second part executes based on validates user input and manipulates thet tasks in the ArrayList level: remove task from an ArrayList
 removes task from an Arraylist
-displays the commands related to the todolist app
-validate commands against pre-defined list and calls the other methods above
 */
 
 
 public class Todolist {
 
-
-    Integer userOption;
+    private int userOption;
     ArrayList<Task> listOfTasks = new ArrayList<>();
-
+    int[] intOptions = new int[] {1,2,3,4};
     static Scanner scanner = new Scanner(System.in);
 
     public static void printWelcome() {
@@ -30,71 +29,68 @@ public class Todolist {
 
     }
 
-    public void setUserCommand(Integer userOption) {
+    public int setUserCommand() {
         userOption = scanner.nextInt();
     }
 
-
-    public int getUserCommand(Integer userOption) {
-        // if loop validating user command as well as connecting to the appropriate course of action
-        // if command invalid then display error and call method printWelcome again }
+    public int getUserCommand() {
         return this.userOption = userOption;
-
     }
 
+    // checks if an 'int key' such as the userCommand is within the pre-defined Array of options named intOptions (as per displayed in the printWelcome)
+    public static boolean contains(int[] intOptions, final int key) {
+        return Arrays.stream(intOptions).anyMatch(i -> i == key);
+    }
 
-    public void isNumber(Integer userOption) {
-
-
-        // pass value to @userOption param if the value is an int
-        // AND the value is between 1-4
-        // do an array
-        while (scanner.hasNextInt() &&
-
-         // pull the .value method to check if nr is between 1-4.
+    // if method 'contains' return false then ask for user input again. Else: process user command
+    public void displayInputInvalid() {
+        if (!contains(intOptions, setUserCommand())) {
+            System.out.println("Invalid command, please select one of these options: (1), (2), (3), (4)");
+            setUserCommand();
+        } else {
+            // processUserCommand();
         }
-
-        // careful with opening and closing the scanner. Keep track of all scanners that i opened.
-        // perhaps encapsulating into a class.
-        scanner.close(); //why close?
-
-
     }
 
-    public void processUserCommand() {
+    private void processUserCommand() {
         if (userOption == 1) {
             showTaskList();
         } else if (userOption == 2) {
             addTaskToArrayList();
         } else if (userOption == 3) {
-            break //method to come
+            editTask();
         } else if (userOption == 4) {
-            // call save and quit //method to come
-        } else {
-            break
+            saveQuit();
         }
     }
 
-    public void showTaskList() {
-        System.out.println(listOfTasks);
 
+    public ArrayList showTaskList() {
+        System.out.println(listOfTasks);
     }
 
 
     // Create a task
-    public void addTaskToArrayList() {
+    public void addTaskToArrayList(); {
         Task t = new Task;
         t.createTask();
-
         listOfTasks.add(t);
 
     }
 
-    public void removeTaskfromArrayList() {
+    public void editTask() {
+        // see paper notes
+    }
+
+    /*public void removeTaskfromArrayList() {
         // display array
         // select task by writing the id ?
         // remove id which removes the entire task
 
+    }*/
+
+
+    public void saveQuit() {
     }
 
 }

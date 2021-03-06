@@ -1,11 +1,10 @@
 package todolistmaster;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
-// Class Task mirrors one task and all its fields. Several tasks will compose a Todolist.
- All methods related to the task are listed here.
+// Class Task represents one task and all its fields. Several tasks will compose an ArrayList, which is in the Todolist class
+ All methods related to the task belong here: create task, change fields, convert a task with all its fields to string
 */
 public class Task {
 
@@ -13,8 +12,7 @@ public class Task {
     private String title;
     private LocalDate dueDate;
     private String projectName;
-    private boolean taskStatus; // always start as false = "open"
-
+    private boolean taskStatus;
 
 
     // Define getters & setters for each attribute
@@ -35,7 +33,7 @@ public class Task {
         return this.dueDate;
     }
 
-    public static void setProjectName(String projectName) {
+    public void setProjectName(String projectName) {
         this.projectName = projectName;
     }
 
@@ -45,15 +43,24 @@ public class Task {
 
 
     public void setStatus(boolean taskStatus) {
-        this.taskStatus = false;
+        String open;
+        String closed;
+
+        taskStatus = true;
+        open = Boolean.toString(true);
+        if (taskStatus = false) {
+            closed = Boolean.toString(false);
+        } else {
+            System.out.println("Task status not assigned");
+        }
     }
 
     public boolean getStatus() {
-        return this.taskStatus;
+        return taskStatus;
     }
 
 
-/** Set taks title, project and date according to user input
+/** Set tasks title, project and date according to user input
  * */
 
     public void createTask() {
@@ -67,11 +74,13 @@ public class Task {
 
         System.out.println("Write a date in format YYYY-MM-DD for your task");
         setDueDate(LocalDate.parse(userInput.nextLine()));
+
+        userInput.close();
     }
 
     public String toString() {
 
-        return "Title: " + getTitle() + "Project: " + getProjectName() + "Due date: " + getDueDate() + "Status: " + getStatus();
+        return "Title:" + getTitle() + " Project:" + getProjectName() + " Due date: " + getDueDate() + " Status:" + getStatus();
 
     }
 }
