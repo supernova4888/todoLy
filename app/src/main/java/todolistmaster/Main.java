@@ -12,6 +12,17 @@ public class Main {
         // display initial instruction of TodoLy
         Todolist.printWelcome();
 
+        Todolist.setUserCommand();
+
+
+        // TODO i cant use any of the methods in the Todolist Class. There are a lot of problem with static, non static
+
+
+
+
+
+
+
 
 
 

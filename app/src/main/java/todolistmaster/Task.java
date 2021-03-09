@@ -1,16 +1,18 @@
 package todolistmaster;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
 // Class Task represents one task and all its fields. Several tasks will compose an ArrayList, which is in the Todolist class
  All methods related to the task belong here: create task, change fields, convert a task with all its fields to string
 */
-public class Task {
+public class Task implements Serializable {
 
     // attributes of one Task
     private String title;
-    private LocalDate dueDate;
+    private String dueDate;
     private String projectName;
     private boolean taskStatus;
 
@@ -25,11 +27,16 @@ public class Task {
         return this.title;
     }
 
-    public LocalDate setDueDate(LocalDate dueDate) {
+    // TODO check how it works with the date
+    public String setDueDate(String dueDate) {
+
+        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        //return this.dueDate = LocalDate.parse(dueDate, formatter);
         return this.dueDate = dueDate;
+
     }
 
-    public LocalDate getDueDate(){
+    public String getDueDate(){
         return this.dueDate;
     }
 
@@ -42,16 +49,16 @@ public class Task {
     }
 
 
-    public String setStatus(boolean taskStatus) {
+    public void setStatus(boolean taskStatus) {
         String open;
         String closed;
 
-        taskStatus = true;
-        open = Boolean.toString(true);
-        if (taskStatus = false) {
+        if (taskStatus = true) {
+            open = Boolean.toString(true);
+        } else if (taskStatus = false) {
             closed = Boolean.toString(false);
         } else {
-            System.out.println("Task status not assigned");
+           System.out.println("Task status not assigned");
         }
     }
 
@@ -73,7 +80,7 @@ public class Task {
         setProjectName(userInput.nextLine());
 
         System.out.println("Write a date in format YYYY-MM-DD for your task");
-        setDueDate(LocalDate.parse(userInput.nextLine()));
+        setDueDate(userInput.nextLine());
 
         userInput.close();
     }
