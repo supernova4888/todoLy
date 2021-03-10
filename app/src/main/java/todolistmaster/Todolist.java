@@ -52,7 +52,7 @@ public class Todolist implements Serializable {
     }
 
     // if method 'contains' return false then ask for user input again. Else: process user command
-    public static void displayInputInvalid() {
+    public void displayInputInvalid() {
         if (!contains(intOptions, setUserCommand())) {
             System.out.println("Invalid command, please select one of these options: (1), (2), (3), (4)");
             setUserCommand();
@@ -61,7 +61,7 @@ public class Todolist implements Serializable {
         }
     }
 
-    private static void processUserCommand() {
+    private void processUserCommand() {
         if (userOption == 1) {
             showTaskList();
         } else if (userOption == 2) {
