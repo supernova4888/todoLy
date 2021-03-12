@@ -80,7 +80,8 @@ public class UserInterface
         todolist.displayTask();
         System.out.println("Pick the number representing the task you want to edit: ");
         // get the task;
-        // userOption = validateInt(Collections.min(), todolist.getOneTask())
+        // find a way to find the min and max to facilitate life
+        userOption = validateInt(todolist.getFirstTask(), todolist.getLastTask());
         // how to bring min int and max int
         userOption = validateInt()
 

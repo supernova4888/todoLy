@@ -22,6 +22,15 @@ public class TaskList implements Serializable {
     public ArrayList<Task> getTodolist2() {
         return todolist2;
     }
+// TODO this thing is not working
+    public int getFirstTask() {
+        return todolist2.get(0);
+    }
+
+    public int getLastTask() {
+        return todolist2.size(-1);
+    }
+
 
     public void addToList(Task task) {
 
