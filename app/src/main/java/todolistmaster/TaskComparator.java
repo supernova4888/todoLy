@@ -18,19 +18,13 @@ public class TaskComparator implements Comparator<Task>
         {
             case 'd':
 
-                // TODO fix the date issue;
-                Integer date1 = t1.getDueDate();
-                Integer date2 = t2.getDueDate();
-
-                return date1.compareTo(date2);
-                break;
+                return t1.getDueDate().compareTo(t2.getDueDate());
 
             case 'p':
-                return t1.getProjectName().toUpperCase().compareTo(t2.getProjectName().toUpperCase());
-                break;
+                return t1.getProjectName().toLowerCase().compareTo(t2.getProjectName().toLowerCase());
 
         }
-        return 0;
+        return t1.getTitle().toLowerCase().compareTo(t2.getTitle().toLowerCase());
     }
 
 }

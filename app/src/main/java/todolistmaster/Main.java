@@ -8,24 +8,13 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         // display initial instruction of TodoLy
 
-        // instatiate the objects and call the methods here
-        /*UserInterface ui = new UserInterface();
-        ui.printWelcome();
+        UserInterface app = null;
 
-        ui.addTask(2);*/
-
-        // Todolist.printWelcome();
-
-
-
-
-
-
-
+        app.printWelcome();
 
 
 

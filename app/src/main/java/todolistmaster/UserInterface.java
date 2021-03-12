@@ -1,8 +1,6 @@
 package todolistmaster;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -22,7 +20,7 @@ public class UserInterface
     // ArrayList<Task> listOfTasks = new ArrayList<>();
 
 
-    public void printWelcome() {
+    public int printWelcome() {
         System.out.println();
         System.out.println("Welcome to ToDoLy");
         System.out.println("You have " + "X - placeholder" + "tasks todo and " + "Y - placeholder" + "tasks are done!");
@@ -44,26 +42,79 @@ public class UserInterface
 
     }
 
-        public void addTask(int userOption) throws IOException {
-            this.userOption = userOption;
-            if (userOption == 2)
-            {
-                System.out.println("Write a title for your task:"); // print instruction on terminal
-                String title = (scanner.nextLine()); // capture the user input and set to variable title
+    public void showTask()
+    {
+        todolist.Sort();
+    }
 
-                System.out.println("Write a date in format YYYY-MM-DD for your task");
-                String dueDate = (scanner.nextLine());
 
-                System.out.println("Write a Project for your task:");
-                String project = (scanner.nextLine());
+    public void addTask(int userOption)
+    {
+        this.userOption = userOption;
+        if (userOption == 2)
+        {
+            System.out.println("Write a title for your task:"); // print instruction on terminal
+            String title = (scanner.nextLine()); // capture the user input and set to variable title
 
-               Task newTask = new Task(title, dueDate, project);
-               todolist.addToList(newTask);
-               System.out.println("Task successfully saved to list");
+            System.out.println("Write a date in format YYYY-MM-DD for your task");
+            String dueDate = (scanner.nextLine());
 
-            }
+            System.out.println("Write a Project for your task:");
+            String project = (scanner.nextLine());
+
+           Task newTask = new Task(title, dueDate, project);
+           todolist.addToList(newTask);
+           System.out.println("Task successfully saved to list");
+
+           // TODO update count of the tasks and update printWelcome
+           printWelcome();
+
         }
+    }
 
+    public void editTask()
+    {
+        // Step 1. display tasks
+        // Step 2. ask user to select which task she wants to edit
+        // Step 3. ask user to select what to edit (mark as done, remove or update field)
+        todolist.displayTask();
+        System.out.println("Pick the number representing the task you want to edit: ");
+        // get the task;
+        // userOption = validateInt(Collections.min(), todolist.getOneTask())
+        // how to bring min int and max int
+        userOption = validateInt()
+
+        todolist.getOneTask();
+        System.out.println("Pick an editing option: ");
+        System.out.println("(1) Mark as done");
+        System.out.println("(2) Remove");
+        System.out.println("(3) Update field");
+
+
+
+
+        //    System.out.println("(3) Edit Task (update, mark as done, remove)");
+
+        // Mark as done
+
+            // TODO update count of the tasks and update printWelcome
+            // go back to Welcome
+
+        // Remove
+
+            // TODO update count of the tasks and update printWelcome
+            // go back to Welcome
+
+
+        // Update field
+
+            // print "select which field to edit"
+            // print "enter new value"
+            // substitute the value
+            // print "change sucessfull"
+            // go back to Welcome
+
+    }
 
 
 
@@ -76,11 +127,11 @@ public class UserInterface
             {
                 int userOption = Integer.parseInt(scanner.nextLine());
                 if (userOption < min) {
-                    System.out.println("You entered a number below 1. Please enter a number between 1-4, inclusive");
+                    System.out.println("You entered a number below" + min +"Please enter a number between" + min + "-" + max + ", inclusive");
                     continue;
                 }
                 if (userOption > max) {
-                    System.out.println("You entered a number above 4. Please enter a number between 1-4, inclusive");
+                    System.out.println("You entered a number above" + max + "Please enter a number between" + min + "-" + max + ", inclusive");
                     continue;
                 }
                 return userOption;
@@ -88,7 +139,7 @@ public class UserInterface
             // catch if they enter a string rather than an int
             catch(NumberFormatException e )
             {
-                System.out.println("Format invalid. Please enter a number between 1-4, inclusive");
+                System.out.println("Format invalid. Please enter a number between" + min + "-" + max + ", inclusive");
             }
         }
     }

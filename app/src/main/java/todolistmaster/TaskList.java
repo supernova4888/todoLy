@@ -1,7 +1,6 @@
 package todolistmaster;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -14,15 +13,19 @@ import java.util.Comparator;
 
 public class TaskList implements Serializable {
 
-    Task test = new Task();
+    Task oneTask = new Task();
 
     // ArrayList to hold collection of tasks
     ArrayList<Task> todolist2 = new ArrayList<>();
 
 
+    public ArrayList<Task> getTodolist2() {
+        return todolist2;
+    }
+
     public void addToList(Task task) {
 
-        todolist2.add(test);
+        todolist2.add(oneTask);
     }
 
     public void showTaskList(ArrayList<Task> list) {
@@ -34,13 +37,10 @@ public class TaskList implements Serializable {
     public void Sort()
     {
 
-        // get the list
-        // get the 'project name'
-        // sort the project per name
-        System.out.println("Type 'd' to sort by due date or 'p' to sort alphabetically by project. Or type X to go back to the main menu");
+        System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project");
         int x = 1;
 
-        switch (x)
+        switch(x)
         {
             case 1: // sort by duedate
                 sort(new TaskComparator('d'));
@@ -48,6 +48,7 @@ public class TaskList implements Serializable {
             case 2: // sort by project name
                 sort(new TaskComparator('p'));
                 break;
+                // TODO why cant i call printwelcome?
         }
     }
 
@@ -58,9 +59,25 @@ public class TaskList implements Serializable {
     }
 
 
+    /*public void counter();
+    {
+     // update the count of tasks.
+    }*/
 
+    public void displayTask()
+    {
+        int counter = 1;
 
+        for (int i = 0; i < todolist2.size() ; i++)
+        {
+            System.out.println(counter + " " + todolist2.get(i));
+            counter++;
+        }
+    }
 
+    public Task getOneTask() {
+        return oneTask;
+    }
 }
 
     // split this method in 2 part. The first part where it requires user command go to UserInterface Class. The second part which should be here is just 'pull' and 'saving' the task into an array.
@@ -80,9 +97,4 @@ public class TaskList implements Serializable {
         // save to txt file
         // exit program. What does exit program means? TODO ask TA's
 
-    }
-
-
-
-}
-
+**/
