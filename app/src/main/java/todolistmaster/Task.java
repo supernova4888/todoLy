@@ -16,8 +16,16 @@ public class Task implements Serializable {
     private String projectName;
     private boolean taskStatus;
 
+    public Task(){}
 
-    // Define getters & setters for each attribute
+    public Task(String title, String dueDate, String projectName, boolean taskStatus) {
+        this.title = title;
+        this.dueDate = dueDate;
+        this.projectName = projectName;
+        this.taskStatus = false; // start a new task as false, as its always 'open'
+    }
+
+// Define getters & setters for each attribute
 
     public String setTitle(String title) {
         return this.title = title;
@@ -31,7 +39,7 @@ public class Task implements Serializable {
     public String setDueDate(String dueDate) {
 
         // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        //return this.dueDate = LocalDate.parse(dueDate, formatter);
+        //return this.dueDate = LocalDate.parseDueDat(dueDate, formatter);
         return this.dueDate = dueDate;
 
     }
@@ -50,40 +58,20 @@ public class Task implements Serializable {
 
 
     public void setStatus(boolean taskStatus) {
-        String open;
-        String closed;
-
-        if (taskStatus = true) {
-            open = Boolean.toString(true);
-        } else if (taskStatus = false) {
-            closed = Boolean.toString(false);
-        } else {
-           System.out.println("Task status not assigned");
-        }
+       this.taskStatus = taskStatus;
+//        if (taskStatus.equals( "true")) {
+//            open = Boolean.toString(true);
+//        } else if (taskStatus = false) {
+//            closed = Boolean.toString(false);
+//        } else {
+//           System.out.println("Task status not assigned");
+//        }
     }
 
     public boolean getStatus() {
         return taskStatus;
     }
 
-
-/** Set tasks title, project and date according to user input
- * */
-
-    public void createTask() {
-        Scanner userInput = new Scanner(System.in); // create a Scanner object
-
-        System.out.println("Write a title for your task:"); // print instruction on terminal
-        setTitle(userInput.nextLine()); // capture the user input and set to variable title
-
-        System.out.println("Write a Project for your task:");
-        setProjectName(userInput.nextLine());
-
-        System.out.println("Write a date in format YYYY-MM-DD for your task");
-        setDueDate(userInput.nextLine());
-
-        userInput.close();
-    }
 
     public String toString() {
 

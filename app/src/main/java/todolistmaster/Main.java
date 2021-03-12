@@ -2,7 +2,7 @@ package todolistmaster;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/** Calls objects and related methods for program execution
+/** This is where the program runs. This class calls the objects, instantiate and use/call methods for the todolist app execution
  **/
 
 public class Main {
@@ -10,14 +10,12 @@ public class Main {
     public static void main(String[] args) {
 
         // display initial instruction of TodoLy
-        Todolist.printWelcome();
 
-        Todolist.setUserCommand();
+        // instatiate the objects and call the methods here
+        UserInterface ui = new UserInterface();
+        ui.printWelcome();
 
-
-
-
-        // TODO i cant use any of the methods in the Todolist Class. There are a lot of problem with static, non static
+        // Todolist.printWelcome();
 
 
 

@@ -19,8 +19,9 @@ public class FileHandler {
     private String path = "/Users/dbao/Documents/todoLy/app/src/main/java/todolistmaster/";
 
 
-//TODO not tested yet, just took from Nour
-    public void writeToFile(ArrayList<Task> list)
+//TODO not tested yet, just pseudocode
+
+    public void writeAsObject(ArrayList<Task> list)
     {
         try {
             // FileOutputStream writes stream of raw bytes. And requires the construction of the OutputStreamWriter
@@ -50,7 +51,7 @@ public class FileHandler {
     }
 
 // read file as Data
-    /*public void readFile()
+    /*public void readAsObject()
     {
 
         ArrayList<Task> list = new ArrayList<>();
