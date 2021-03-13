@@ -1,4 +1,6 @@
 package todolistmaster;
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -84,9 +86,37 @@ public class TaskList implements Serializable {
         }
     }
 
+
     public Task getOneTask() {
         return oneTask;
     }
+
+
+    public int countOpenTask()
+    {
+        int countOpen = 0;
+        for (int i = 0; i < todolist2.size(); i++){
+            if (oneTask.getStatus() == true) {
+                countOpen = countOpen + 1;
+            }
+        }
+        return countOpen;
+    }
+
+
+    public int countClosedTask()
+    {
+        int countClosed = 0;
+        for (int i = 0; i < todolist2.size(); i++){
+            if (oneTask.getStatus() == false) {
+                countClosed = countClosed + 1;
+            }
+        }
+        return countClosed;
+    }
+
+
+
 }
 
     // split this method in 2 part. The first part where it requires user command go to UserInterface Class. The second part which should be here is just 'pull' and 'saving' the task into an array.

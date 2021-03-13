@@ -9,9 +9,14 @@ public class Main {
 
         // display initial instruction of TodoLy
 
-        UserInterface app = null;
+        UserInterface app = new UserInterface();
 
+        app.printWelcome();
+        app.printStatus();
         app.printMenu();
+
+
+
 
 
 

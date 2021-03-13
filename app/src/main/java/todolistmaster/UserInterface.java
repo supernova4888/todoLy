@@ -1,4 +1,6 @@
 package todolistmaster;
+import java.text.ParseException;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 
@@ -23,22 +25,28 @@ public class UserInterface
         System.out.println("Welcome to ToDoLy");
     }
 
+    public void printStatus()
+    {
+        System.out.println("You have " + todolist.countOpenTask() + "tasks todo and " + todolist.countClosedTask() + "tasks are done!");
+
+    }
 
     public void printMenu() {
-        System.out.println("You have " + "X - placeholder" + "tasks todo and " + "Y - placeholder" + "tasks are done!");
         System.out.println("Pick an option:");
         System.out.println("(1) Show Task List (by date or project)");
         System.out.println("(2) Add New Task");
         System.out.println("(3) Edit Task (update, mark as done, remove)");
         System.out.println("(4) Save and Quit");
 
-        int userOption = validateInt(1, 4); // this method connects to the one below
+        // this method connects  to the one below
+        int userOption = validateInt(1, 4);
 
     }
 
 
     public void printBye()
     {
+        // TODO
         // connect to file handler - to savefile
         // do i need to close all scanners here?
         System.out.println("See you later alligator!");
@@ -53,25 +61,48 @@ public class UserInterface
 
     public void addTask(int userOption)
     {
+        String dueDate = "";
         this.userOption = userOption;
+
         if (userOption == 2)
         {
-            System.out.println("Write a title for your task:"); // print instruction on terminal
-            String title = (scanner.nextLine()); // capture the user input and set to variable title
+            // instantiate Task
+            Task newTask = new Task();
 
-            System.out.println("Write a date in format YYYY-MM-DD for your task");
-            String dueDate = (scanner.nextLine());
+            System.out.println("Write a title for your task:");
+            String title = (scanner.nextLine());
+
+            boolean success = true;
+            while (success) {
+
+                try {
+                    System.out.println("Write a date in format DD/MM/YYYY for your task");
+                    dueDate = (scanner.nextLine());
+
+                    newTask.setDueDate(dueDate);
+                    success = false;
+
+                } catch (ParseException e) {
+                    System.out.println("An error occurred during parsing");
+
+                } catch (DateTimeParseException e) {
+                    System.out.println("The value for date, month or year is invalid");
+                }
+            }
 
             System.out.println("Write a Project for your task:");
             String project = (scanner.nextLine());
 
-            // instantiate and call the Task constructor
-           Task newTask = new Task(title, dueDate, project);
+            // call and update the Task constructor
+            newTask = new Task(title, dueDate, project);
+
+
            todolist.addToList(newTask);
            System.out.println("Task successfully saved to list");
 
-           // TODO update count of the tasks and printMenu;
-           printMenu();
+           // TODO test if open Tasks/Closed Tasks counter works.
+            printStatus();
+            printMenu();
 
         }
     }
