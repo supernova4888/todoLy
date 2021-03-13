@@ -10,17 +10,13 @@ import java.util.Scanner;
  Everything related to scanner will also be in this Class. In other words this class is the central interface between
  the user and the command execution*/
 
-
+// TODO loop the app and allow for adding tasks, editing, etc. without crashing. See method #printmenu
 
 public class UserInterface
 {
     private Scanner scanner = new Scanner(System.in);
-    TaskList todolist = new TaskList();
-    private int userOption;
-    LocalDate date1;
+    private TaskList todolist = new TaskList();
 
-
-    // ArrayList<Task> listOfTasks = new ArrayList<>();
 
     public void printWelcome()
     {
@@ -28,22 +24,26 @@ public class UserInterface
         System.out.println("Welcome to ToDoLy");
     }
 
+
     public void printStatus()
     {
         System.out.println("You have " + todolist.countOpenTask() + " tasks todo and " + todolist.countClosedTask() + " tasks are done!");
 
     }
 
-    public void printMenu() {
+
+    public int printMenu() {
         System.out.println("Pick an option:");
+
+        // All options except "edit" returns to the main menu after execution
         System.out.println("(1) Show Task List (by date or project)");
         System.out.println("(2) Add New Task");
-        System.out.println("(3) Edit Task (update, mark as done, remove)");
+        System.out.println("(3) Edit Task (update, mark as done, remove) or return to Main Menu");
         System.out.println("(4) Save and Quit");
 
         // this method connects  to the one below
-        userOption = validateInt(1,4);
-
+        int userOption = validateInt(1,4);
+        return userOption;
     }
 
 
@@ -68,29 +68,36 @@ public class UserInterface
             // showtasklist w/ for loop: it didnt return aything
             // print each object of the todolist (type tasklist)
             // last try: created internal method, call tasks, but no tasks were printed
-        System.out.println("in ShowTask");
 
+        if (userOption == 1) {
 
-        todolist.showTaskList();
+            System.out.println("in ShowTask");
 
-        System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project");
+            // should print the list in default order
+            if (todolist.showTaskListWithoutIndex() == 0) {
+                System.out.println("The list is empty, nothing to show");
+                printMenu();
+            }
+            // if showTaskList() != 0
+            // execute the showTaskList code then show more sorting options
+            System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project");
 
+            // scanner to take in useroption - WORKS
+            userOption = validateInt(1, 2);
 
-        // scanner to take in useroption - WORKS
-        userOption = validateInt(1,2);
+            // some obscure error here, scanner doesnt reconize int 1 or 2 when passed to the list
+            // userOption = Integer.parseInt(scanner.nextLine());
 
-        // some obscure error here, scanner doesnt reconize int 1 or 2 when passed to the list
-        // userOption = Integer.parseInt(scanner.nextLine());
-
-        todolist.Sort(userOption);
+            todolist.Sort(userOption);
+            printMenu();
+        }
 
     }
 
 
     public void addTask(int userOption)
     {
-        String dueDate = "";
-        this.userOption = userOption;
+
 
         if (userOption == 2)
         {
@@ -101,21 +108,19 @@ public class UserInterface
             String title = (scanner.nextLine());
 
             System.out.println("Write a date in format DD/MM/YYYY for your task");
-            validateDate();
+            LocalDate date1 = validateDate();
 
             System.out.println("Write a Project for your task:");
             String project = (scanner.nextLine());
 
             Task newTask = new Task(title, date1, project);
-
-            //System.out.println(newTask.toString());
-
+            System.out.println(newTask.toString());
             todolist.addToList(newTask);
 
-           System.out.println("Task successfully saved to list");
+            System.out.println("Task successfully saved to list");
 
-           // TODO test if open Tasks/Closed Tasks counter works.
             printStatus();
+            // TODO test if it loops properly to the Main Menu. It doesnt, it crashes after a couple of times.
             printMenu();
 
         }
@@ -123,13 +128,12 @@ public class UserInterface
 
     public LocalDate validateDate() {
 
-
-        // bring the date parser here from TASK
-        // Loop and validation of the date inserted by user
+        /** Validates the date inserted by user, transforms to LocalDate type and passes to the
+         * @param: date1 */
 
         String dueDate;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
+        LocalDate date1 = null;
         boolean success = true;
         while (success) {
 
@@ -147,45 +151,63 @@ public class UserInterface
     }
 
 
-    public void editTask()
-    {
-        // Step 1. display tasks
-        // Step 2. ask user to select which task she wants to edit
-        // Step 3. ask user to select what to edit (mark as done, remove or update field)
-        todolist.displayTask();
-        System.out.println("Pick the number representing the task you want to edit: ");
-        // get the task;
-        // how to bring min int and max int
-        userOption = validateInt(1,4);
+    public void editTaskMenu() {
 
-        todolist.getTask();
+        // Step 1. display tasks
+        // Step 2. ask user to type number of task she wants to edit
+        todolist.displayTaskWithIndex();
+        System.out.println("Pick the number representing the task you want to edit: ");
+
+        // Step 3. ask user to select what to edit (mark as done, remove or update field) or return to main menu
+
+        // get the task;
+        int taskIndex = validateInt(1, todolist.maxSize()) - 1;
+        // Add a new validate for here for the Editing options below
+
+        // Review if this 'call' actually works
+        //Task taskToEdit = todolist.getTaskAtIndex(taskIndex)
+
+        // or this?
+        //todolist.getTask();
+
         System.out.println("Pick an editing option: ");
         System.out.println("(1) Mark as done");
         System.out.println("(2) Remove");
         System.out.println("(3) Update field");
         System.out.println("(4) Changed my mind, return to Main Menu");
 
+        // TODO create a switch that connects to the other methods below
+        // int userOption = 1;
+        // switch
+        //  todolist.markasDone(taskToEdit);
+            // removeTask()
+            // ...
 
+    }
+// can go to the TaskList Class (or can stay here as well)
+    public void markDone() {
+        // change setStatus to false
+        // (?) re-add the task to the array: JUST CHANGING STATUS
+       // go back to Main Menu
+       //...
+    }
 
+    // can go to the TaskList Class
+    public void removeTask() {
+        // take the task
+        // remove from Array
+        // go back to the main menu
 
-        //    System.out.println("(3) Edit Task (update, mark as done, remove)");
+    }
 
-        // Mark as done
-
-            // TODO update count of the tasks and update printWelcome
-            // go back to Welcome
-
-        // Remove
-
-            // TODO update count of the tasks and update printWelcome
-            // go back to Welcome
-
-
+    public void updateField(){
+        // take the test
         // Update field
 
             // print "select which field to edit"
             // print "enter new value"
             // substitute the value
+            // (?) re-add the task to the Array: JUST CHANGING THE STATUS
             // print "change sucessfull"
             // go back to Welcome
 
@@ -200,16 +222,16 @@ public class UserInterface
         {
             try
             {
-                userOption = Integer.parseInt(scanner.nextLine());
-                if (userOption < min) {
+                int userInput = Integer.parseInt(scanner.nextLine());
+                if (userInput < min) {
                     System.out.println("You entered a number below" + min +"Please enter a number between" + min + "-" + max + ", inclusive");
                     continue;
                 }
-                if (userOption > max) {
+                if (userInput > max) {
                     System.out.println("You entered a number above" + max + "Please enter a number between" + min + "-" + max + ", inclusive");
                     continue;
                 }
-                return userOption;
+                return userInput;
             }
             // catch if they enter wrong number or string rather than a valid int
             catch(NumberFormatException e )
@@ -218,7 +240,37 @@ public class UserInterface
             }
         }
     }
+// TODO this is the method that will make the program run - while true: loop, false: stops looping
+    public void callMethods(){
+        // do while == true
+        // or exit program
+        boolean hasFinished = false;
 
+        while(hasFinished)
+        {
+            int option = printMenu();
+
+            switch (option)
+            {
+                //case 1: addTask();
+                case 4:
+                    System.out.println("bye");
+                    // save to file
+                    //System.exit(0);
+                    hasFinished = true;
+            }
+
+        }
+
+    }
+
+    /*public void saveQuit() {
+        // save to txt file
+        // exit program. What does exit program means?
+        TODO - this just exists everyhting
+        there are a couple ways i can exit
+             // type system.exit (0)
+    }*/
 
 
 }

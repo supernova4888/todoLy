@@ -11,7 +11,6 @@ import java.util.*;
 
 public class TaskList implements Serializable {
 
-    Task Task = new Task();
     // ArrayList to hold collection of tasks
     ArrayList<Task> todolist2 = new ArrayList<>();
 
@@ -22,36 +21,30 @@ public class TaskList implements Serializable {
         //return todolist2;
     }
 
-
+    /** Adds a new task to the ArrayList */
     public void addToList(Task task) {
-        todolist2.add(Task);
-        // TODO do i really need this counter to be here?
-        countOpenTask();
-        countClosedTask();
-        // changed 13,Mar,16:01
-        System.out.println(todolist2.toString());
+        todolist2.add(task);
     }
 
 
-    public void showTaskList()
+    public int showTaskListWithoutIndex()
     {
         // for all items in the list, loop
         System.out.println("in showTaskList");
 
-        for (int i = 0; i < todolist2.size(); i++){
-            // print the Task details
-            Task.toString();
-            // print a new line
-            System.out.println();
+        if (todolist2.size() == 0) {
+            return 0;
         }
-
+        for (Task task : todolist2)
+        {
+            System.out.println(task);
+        }
+        return 1;
     }
 
 
     public void Sort(int x)
     {
-
-        x = 0;
 
         switch(x)
         {
@@ -72,24 +65,40 @@ public class TaskList implements Serializable {
 
     }
 
-
-
-    public void displayTask()
-    {
+    /**
+    Append a number to each task and returns all tasks in the list
+    */
+    public String displayTaskWithIndex() {
         //@param counter: ordered number to represent each task
-        int counter = 1;
 
-        for (int i = 0; i < todolist2.size() ; i++)
-        {
-            System.out.println(counter + "- " + todolist2.get(i));
-            System.out.println();
-            counter++;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (todolist2.size() == 0) {
+            return "Your task list is empty";
+        } else
+            {
+            for (int i = 0; i < todolist2.size(); i++) {
+                stringBuilder.append("\n (" + (i+1) + ") " + todolist2.get(i));
+                // System.out.println(counter + "- " + todolist2.get(i));
+            }
+            return stringBuilder.toString();
         }
     }
 
+    /** Count total of tasks open that will be updated as the users interacts with the app*/
 
-    public Task getTask() {
-        return Task;
+    public int[] countTasks()
+    {
+        int countOpen = 0;
+        int closedTask = 0;
+        for (int i = 0; i < todolist2.size(); i++){
+            if (todolist2.get(i).getStatus() == false) {
+                countOpen = countOpen + 1;
+            }
+            else
+                closedTask++;
+        }
+        return new int[]{countOpen, closedTask};
     }
 
 
@@ -97,37 +106,35 @@ public class TaskList implements Serializable {
     {
         int countOpen = 0;
         for (int i = 0; i < todolist2.size(); i++){
-            if (Task.getStatus() == false) {
+            if (todolist2.get(i).getStatus() == false) {
                 countOpen = countOpen + 1;
             }
         }
         return countOpen;
     }
 
-
+    /** Count total of tasks closed that will be updated as the users interacts with the app*/
     public int countClosedTask()
     {
         int countClosed = 0;
         for (int i = 0; i < todolist2.size(); i++){
-            if (Task.getStatus() == true) {
+            if (todolist2.get(i).getStatus() == true) {
                 countClosed = countClosed + 1;
             }
         }
         return countClosed;
     }
 
+    public int maxSize()
+    {
+        return todolist2.size();
+    }
+
+
 
 
 }
 
-
-
     /*public void removeTask() {
 
-    }
-
-    public void saveQuit() {
-        // save to txt file
-        // exit program. What does exit program means? TODO ask TA's
-
-**/
+    }*/

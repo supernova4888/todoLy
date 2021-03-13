@@ -80,7 +80,7 @@ public class Task implements Serializable {
     //TODO consider format for when I need to parse this data
     public String toString() {
 
-        return "Title: " + ", " + getTitle() + ", " + "Project: " + ", " + getProjectName() + ", " + "Due date: " + ", " + getDueDate() + ", " + "Status: " + ", " + getStatus();
+        return "Title: " + getTitle() + ", " + "Project: " + getProjectName() + ", Due date: " + getDueDate() + ", " + "Status: " + getStatus();
 
     }
 }
