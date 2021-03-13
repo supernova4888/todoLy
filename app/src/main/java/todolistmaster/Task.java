@@ -13,22 +13,23 @@ public class Task implements Serializable {
     // attributes of one Task
     private String title;
     private String dueDate;
-    LocalDate date1;
+    LocalDate dateOne;
     private String projectName;
     private boolean taskStatus;
+    private String status;
 
-    public Task(){ }
+    public Task() {}
 
     // TODO does the constructor works with my new date format?
-    public Task(String title, String dueDate, String projectName) {
+    public Task(String title, LocalDate dateOne, String projectName) {
         this.title = title;
-        this.dueDate = dueDate;
+        this.dateOne = dateOne;
         this.projectName = projectName;
         this.taskStatus = false;
     }
 
 
-// Define getters & setters for each attribute
+    // Define getters & setters for each attribute
     public String setTitle(String title) {
         return this.title = title;
     }
@@ -38,7 +39,7 @@ public class Task implements Serializable {
         return this.title;
     }
 
-
+// takes string and converts it to LocalDate
     public void setDueDate(String dueDate) throws ParseException {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -46,7 +47,7 @@ public class Task implements Serializable {
     }
 
     public LocalDate getDueDate(){
-        return date1;
+        return dateOne;
     }
 
 
@@ -61,14 +62,12 @@ public class Task implements Serializable {
 
 
     public String setStatus(boolean taskStatus) {
-        String status;
         this.taskStatus = taskStatus;
         if (taskStatus == true){
             return status = "closed";
         }
         return status = "open";
     }
-
 
     public boolean getStatus() {
         return taskStatus;
@@ -78,7 +77,7 @@ public class Task implements Serializable {
     //TODO consider format for when I need to parse this data
     public String toString() {
 
-        return "Title: " +","+ getTitle() + "," + "Project: " + "," + getProjectName() + "," + "Due date: " + "," + getDueDate() + "," + "Status: " + "," + getStatus();
+        return "Title: " + ", " + getTitle() + ", " + "Project: " + ", " + getProjectName() + ", " + "Due date: " + ", " + getDueDate() + ", " + "Status: " + ", " + getStatus();
 
     }
 }

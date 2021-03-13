@@ -1,5 +1,6 @@
 package todolistmaster;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
@@ -16,6 +17,8 @@ public class UserInterface
     private Scanner scanner = new Scanner(System.in);
     TaskList todolist = new TaskList();
     private int userOption;
+    LocalDate date1;
+
 
     // ArrayList<Task> listOfTasks = new ArrayList<>();
 
@@ -27,7 +30,7 @@ public class UserInterface
 
     public void printStatus()
     {
-        System.out.println("You have " + todolist.countOpenTask() + "tasks todo and " + todolist.countClosedTask() + "tasks are done!");
+        System.out.println("You have " + todolist.countOpenTask() + " tasks todo and " + todolist.countClosedTask() + " tasks are done!");
 
     }
 
@@ -39,7 +42,7 @@ public class UserInterface
         System.out.println("(4) Save and Quit");
 
         // this method connects  to the one below
-        int userOption = validateInt(1, 4);
+        userOption = validateInt(1,4);
 
     }
 
@@ -53,9 +56,34 @@ public class UserInterface
     }
 
 
-    public void showTask()
+    public void showTask(int userOption)
     {
-        todolist.Sort();
+
+        // Step 1. print the current list of tasks (= collection)
+            // this is showing position in memory. Check Task Class again
+        // tried:
+            //todolist.showTaskList(todolist.todolist2);
+            // todolist.getTodolist2();
+            // showtasklist w/o the for loop
+            // showtasklist w/ for loop: it didnt return aything
+            // print each object of the todolist (type tasklist)
+            // last try: created internal method, call tasks, but no tasks were printed
+        System.out.println("in ShowTask");
+
+
+        todolist.showTaskList();
+
+        System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project");
+
+
+        // scanner to take in useroption - WORKS
+        userOption = validateInt(1,2);
+
+        // some obscure error here, scanner doesnt reconize int 1 or 2 when passed to the list
+        // userOption = Integer.parseInt(scanner.nextLine());
+
+        todolist.Sort(userOption);
+
     }
 
 
@@ -67,37 +95,25 @@ public class UserInterface
         if (userOption == 2)
         {
             // instantiate Task
-            Task newTask = new Task();
+            //Task newTask = new Task();
 
             System.out.println("Write a title for your task:");
             String title = (scanner.nextLine());
 
-            boolean success = true;
-            while (success) {
-
-                try {
-                    System.out.println("Write a date in format DD/MM/YYYY for your task");
-                    dueDate = (scanner.nextLine());
-
-                    newTask.setDueDate(dueDate);
-                    success = false;
-
-                } catch (ParseException e) {
-                    System.out.println("An error occurred during parsing");
-
-                } catch (DateTimeParseException e) {
-                    System.out.println("The value for date, month or year is invalid");
-                }
-            }
+            validateDate();
 
             System.out.println("Write a Project for your task:");
             String project = (scanner.nextLine());
 
-            // call and update the Task constructor
-            newTask = new Task(title, dueDate, project);
+            Task newTask = new Task(title, date1, project);
+            System.out.println(newTask);
 
 
-           todolist.addToList(newTask);
+          //  todolist.addToList(newTask);
+
+          // todolist.todolist2.add(newTask);
+
+
            System.out.println("Task successfully saved to list");
 
            // TODO test if open Tasks/Closed Tasks counter works.
@@ -107,6 +123,36 @@ public class UserInterface
         }
     }
 
+    public void validateDate(){
+
+
+        // bring the date parser here from TASK
+        // Loop and validation of the date inserted by user
+        boolean success = true;
+
+        Task newTask = new Task();
+
+        while (success) {
+
+            try {
+                System.out.println("Write a date in format DD/MM/YYYY for your task");
+                String dueDate = (scanner.nextLine());
+
+
+
+                //newTask.setDueDate(dueDate);
+                success = false;
+
+            } catch (ParseException e) {
+                System.out.println("An error occurred during parsing");
+
+            } catch (DateTimeParseException e) {
+                System.out.println("The value for date, month or year is invalid");
+            }
+        }
+
+
+    }
 
     public void editTask()
     {
@@ -116,16 +162,15 @@ public class UserInterface
         todolist.displayTask();
         System.out.println("Pick the number representing the task you want to edit: ");
         // get the task;
-        // find a way to find the min and max to facilitate life
-        userOption = validateInt(todolist.getFirstTask(), todolist.getLastTask());
         // how to bring min int and max int
-        userOption = validateInt()
+        userOption = validateInt(1,4);
 
         todolist.getOneTask();
         System.out.println("Pick an editing option: ");
         System.out.println("(1) Mark as done");
         System.out.println("(2) Remove");
         System.out.println("(3) Update field");
+        System.out.println("(4) Changed my mind, return to Main Menu");
 
 
 
@@ -155,14 +200,14 @@ public class UserInterface
 
 
 
-// i should create one for each type. ValidateInt for user options. I need a validateString for date.
+// i should create one for each type. ValidateInt for user options. I need a validateString for ???
     public int validateInt(int min, int max)
     {
         while(true)
         {
             try
             {
-                int userOption = Integer.parseInt(scanner.nextLine());
+                userOption = Integer.parseInt(scanner.nextLine());
                 if (userOption < min) {
                     System.out.println("You entered a number below" + min +"Please enter a number between" + min + "-" + max + ", inclusive");
                     continue;
@@ -173,7 +218,7 @@ public class UserInterface
                 }
                 return userOption;
             }
-            // catch if they enter a string rather than an int
+            // catch if they enter wrong number or string rather than a valid int
             catch(NumberFormatException e )
             {
                 System.out.println("Format invalid. Please enter a number between" + min + "-" + max + ", inclusive");

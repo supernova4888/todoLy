@@ -1,10 +1,6 @@
 package todolistmaster;
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 
 /**
@@ -16,40 +12,45 @@ import java.util.Comparator;
 public class TaskList implements Serializable {
 
     Task oneTask = new Task();
-
     // ArrayList to hold collection of tasks
     ArrayList<Task> todolist2 = new ArrayList<>();
 
 
-    public ArrayList<Task> getTodolist2() {
-        return todolist2;
-    }
-// TODO this thing is not working
-    public int getFirstTask() {
-        return todolist2.get(0);
-    }
-
-    public int getLastTask() {
-        return todolist2.size(-1);
+// changed to void. Before: ArrayList
+    public void getTodolist2() {
+        System.out.println(todolist2);
+        //return todolist2;
     }
 
 
     public void addToList(Task task) {
-
         todolist2.add(oneTask);
-    }
-
-    public void showTaskList(ArrayList<Task> list) {
-
+        // TODO do i really need this counter to be here?
+        countOpenTask();
+        countClosedTask();
         System.out.println(todolist2);
+    }
+
+
+    public void showTaskList()
+    {
+        // for all items in the list, loop
+        System.out.println("in showTaskList");
+
+        for (int i = 0; i < todolist2.size(); i++){
+            // print the Task details
+            oneTask.toString();
+            // print a new line
+            System.out.println();
+        }
 
     }
 
-    public void Sort()
+
+    public void Sort(int x)
     {
 
-        System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project");
-        int x = 1;
+        x = 0;
 
         switch(x)
         {
@@ -60,6 +61,7 @@ public class TaskList implements Serializable {
                 sort(new TaskComparator('p'));
                 break;
                 // TODO why cant i call printwelcome?
+            // ? create default , in case user changes his mind?
         }
     }
 
@@ -70,18 +72,16 @@ public class TaskList implements Serializable {
     }
 
 
-    /*public void counter();
-    {
-     // update the count of tasks.
-    }*/
 
     public void displayTask()
     {
+        //@param counter: ordered number to represent each task
         int counter = 1;
 
         for (int i = 0; i < todolist2.size() ; i++)
         {
-            System.out.println(counter + " " + todolist2.get(i));
+            System.out.println(counter + "- " + todolist2.get(i));
+            System.out.println();
             counter++;
         }
     }
@@ -96,7 +96,7 @@ public class TaskList implements Serializable {
     {
         int countOpen = 0;
         for (int i = 0; i < todolist2.size(); i++){
-            if (oneTask.getStatus() == true) {
+            if (oneTask.getStatus() == false) {
                 countOpen = countOpen + 1;
             }
         }
@@ -108,7 +108,7 @@ public class TaskList implements Serializable {
     {
         int countClosed = 0;
         for (int i = 0; i < todolist2.size(); i++){
-            if (oneTask.getStatus() == false) {
+            if (oneTask.getStatus() == true) {
                 countClosed = countClosed + 1;
             }
         }
@@ -119,13 +119,6 @@ public class TaskList implements Serializable {
 
 }
 
-    // split this method in 2 part. The first part where it requires user command go to UserInterface Class. The second part which should be here is just 'pull' and 'saving' the task into an array.
-
-    /*public void editTask() {
-        System.out.println("Select which task you would like to edit:");
-        showTaskList();
-
-    }*/
 
 
     /*public void removeTask() {
