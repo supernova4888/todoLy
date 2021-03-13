@@ -16,7 +16,6 @@
       <change beforePath="$PROJECT_DIR$/app/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" afterDir="false" />
     </list>

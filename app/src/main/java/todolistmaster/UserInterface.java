@@ -1,6 +1,6 @@
 package todolistmaster;
-import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
@@ -100,19 +100,17 @@ public class UserInterface
             System.out.println("Write a title for your task:");
             String title = (scanner.nextLine());
 
+            System.out.println("Write a date in format DD/MM/YYYY for your task");
             validateDate();
 
             System.out.println("Write a Project for your task:");
             String project = (scanner.nextLine());
 
             Task newTask = new Task(title, date1, project);
-            System.out.println(newTask);
 
+            //System.out.println(newTask.toString());
 
-          //  todolist.addToList(newTask);
-
-          // todolist.todolist2.add(newTask);
-
+            todolist.addToList(newTask);
 
            System.out.println("Task successfully saved to list");
 
@@ -123,36 +121,31 @@ public class UserInterface
         }
     }
 
-    public void validateDate(){
+    public LocalDate validateDate() {
 
 
         // bring the date parser here from TASK
         // Loop and validation of the date inserted by user
+
+        String dueDate;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         boolean success = true;
-
-        Task newTask = new Task();
-
         while (success) {
 
             try {
-                System.out.println("Write a date in format DD/MM/YYYY for your task");
-                String dueDate = (scanner.nextLine());
-
-
-
-                //newTask.setDueDate(dueDate);
+                dueDate = (scanner.nextLine());
+                // ** Removed type LocalDate
+                date1 = LocalDate.parse(dueDate, formatter);
                 success = false;
-
-            } catch (ParseException e) {
-                System.out.println("An error occurred during parsing");
 
             } catch (DateTimeParseException e) {
                 System.out.println("The value for date, month or year is invalid");
             }
         }
-
-
+        return date1;
     }
+
 
     public void editTask()
     {
@@ -165,7 +158,7 @@ public class UserInterface
         // how to bring min int and max int
         userOption = validateInt(1,4);
 
-        todolist.getOneTask();
+        todolist.getTask();
         System.out.println("Pick an editing option: ");
         System.out.println("(1) Mark as done");
         System.out.println("(2) Remove");

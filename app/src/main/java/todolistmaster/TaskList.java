@@ -11,7 +11,7 @@ import java.util.*;
 
 public class TaskList implements Serializable {
 
-    Task oneTask = new Task();
+    Task Task = new Task();
     // ArrayList to hold collection of tasks
     ArrayList<Task> todolist2 = new ArrayList<>();
 
@@ -24,11 +24,12 @@ public class TaskList implements Serializable {
 
 
     public void addToList(Task task) {
-        todolist2.add(oneTask);
+        todolist2.add(Task);
         // TODO do i really need this counter to be here?
         countOpenTask();
         countClosedTask();
-        System.out.println(todolist2);
+        // changed 13,Mar,16:01
+        System.out.println(todolist2.toString());
     }
 
 
@@ -39,7 +40,7 @@ public class TaskList implements Serializable {
 
         for (int i = 0; i < todolist2.size(); i++){
             // print the Task details
-            oneTask.toString();
+            Task.toString();
             // print a new line
             System.out.println();
         }
@@ -87,8 +88,8 @@ public class TaskList implements Serializable {
     }
 
 
-    public Task getOneTask() {
-        return oneTask;
+    public Task getTask() {
+        return Task;
     }
 
 
@@ -96,7 +97,7 @@ public class TaskList implements Serializable {
     {
         int countOpen = 0;
         for (int i = 0; i < todolist2.size(); i++){
-            if (oneTask.getStatus() == false) {
+            if (Task.getStatus() == false) {
                 countOpen = countOpen + 1;
             }
         }
@@ -108,7 +109,7 @@ public class TaskList implements Serializable {
     {
         int countClosed = 0;
         for (int i = 0; i < todolist2.size(); i++){
-            if (oneTask.getStatus() == true) {
+            if (Task.getStatus() == true) {
                 countClosed = countClosed + 1;
             }
         }

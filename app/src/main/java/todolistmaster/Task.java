@@ -13,17 +13,18 @@ public class Task implements Serializable {
     // attributes of one Task
     private String title;
     private String dueDate;
-    LocalDate dateOne;
     private String projectName;
     private boolean taskStatus;
     private String status;
+    public LocalDate date1;
 
     public Task() {}
 
     // TODO does the constructor works with my new date format?
-    public Task(String title, LocalDate dateOne, String projectName) {
+    public Task(String title, LocalDate date1, String projectName) {
         this.title = title;
-        this.dateOne = dateOne;
+        // this.dueDate = dueDate;
+        this.date1 = date1;
         this.projectName = projectName;
         this.taskStatus = false;
     }
@@ -40,14 +41,16 @@ public class Task implements Serializable {
     }
 
 // takes string and converts it to LocalDate
-    public void setDueDate(String dueDate) throws ParseException {
+// I moved it to the UserInterface class
+   /* public void setDueDate(String dueDate) throws ParseException {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate date1 = LocalDate.parse(dueDate, formatter);
     }
+*/
 
-    public LocalDate getDueDate(){
-        return dateOne;
+    public String getDueDate(){
+        return date1.toString();
     }
 
 

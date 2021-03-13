@@ -28,7 +28,6 @@ public class Main {
 
         app.addTask(2);
 
-        app.showTask(1);
 
         // getTodolist2();
 

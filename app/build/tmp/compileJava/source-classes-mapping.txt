@@ -1,12 +1,12 @@
 todolistmaster/FileHandler.java
  todolistmaster.FileHandler
-todolistmaster/Main.java
- todolistmaster.Main
-todolistmaster/TaskComparator.java
- todolistmaster.TaskComparator
 todolistmaster/Task.java
  todolistmaster.Task
-todolistmaster/TaskList.java
- todolistmaster.TaskList
+todolistmaster/TaskComparator.java
+ todolistmaster.TaskComparator
 todolistmaster/UserInterface.java
  todolistmaster.UserInterface
+todolistmaster/TaskList.java
+ todolistmaster.TaskList
+todolistmaster/Main.java
+ todolistmaster.Main
