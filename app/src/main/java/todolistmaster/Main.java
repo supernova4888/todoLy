@@ -1,7 +1,4 @@
 package todolistmaster;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 /** This is where the program runs. This class calls the objects, instantiate and use/call methods for the todolist app execution
  **/
@@ -14,7 +11,7 @@ public class Main {
 
         UserInterface app = null;
 
-        app.printWelcome();
+        app.printMenu();
 
 
 

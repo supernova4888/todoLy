@@ -1,6 +1,4 @@
 package todolistmaster;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -19,10 +17,14 @@ public class UserInterface
 
     // ArrayList<Task> listOfTasks = new ArrayList<>();
 
-
-    public int printWelcome() {
+    public void printWelcome()
+    {
         System.out.println();
         System.out.println("Welcome to ToDoLy");
+    }
+
+
+    public void printMenu() {
         System.out.println("You have " + "X - placeholder" + "tasks todo and " + "Y - placeholder" + "tasks are done!");
         System.out.println("Pick an option:");
         System.out.println("(1) Show Task List (by date or project)");
@@ -30,17 +32,18 @@ public class UserInterface
         System.out.println("(3) Edit Task (update, mark as done, remove)");
         System.out.println("(4) Save and Quit");
 
-        // opt 2
-        //int x = Integer.parseInt(scanner.nextLine()); // I am happy -> throw an exception ParseException
-
-        // opt1
-        // int userOption = scanner.nextInt(); //2     - the problem here is the empty line    //   2\n   t1
-        //scanner.nextLine();
-
-        //opt3:
         int userOption = validateInt(1, 4); // this method connects to the one below
 
     }
+
+
+    public void printBye()
+    {
+        // connect to file handler - to savefile
+        // do i need to close all scanners here?
+        System.out.println("See you later alligator!");
+    }
+
 
     public void showTask()
     {
@@ -62,15 +65,17 @@ public class UserInterface
             System.out.println("Write a Project for your task:");
             String project = (scanner.nextLine());
 
+            // instantiate and call the Task constructor
            Task newTask = new Task(title, dueDate, project);
            todolist.addToList(newTask);
            System.out.println("Task successfully saved to list");
 
-           // TODO update count of the tasks and update printWelcome
-           printWelcome();
+           // TODO update count of the tasks and printMenu;
+           printMenu();
 
         }
     }
+
 
     public void editTask()
     {
@@ -119,7 +124,7 @@ public class UserInterface
 
 
 
-// i should create one for each type. ValidateInt for user options. I can have a validateString.
+// i should create one for each type. ValidateInt for user options. I need a validateString for date.
     public int validateInt(int min, int max)
     {
         while(true)
