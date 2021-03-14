@@ -16,6 +16,7 @@ public class UserInterface
 {
 
     // global variables
+    // todo: should i have Scanner as global variable or within each method body? pro/cons?
     private Scanner scanner = new Scanner(System.in);
 
     // Object of type 'TaskList'. TaskList is an ArrayList that holds the Task objects.
@@ -32,7 +33,8 @@ public class UserInterface
 
     public void printStatus()
     {
-        System.out.println("You have " + todolist.countOpenTask() + " tasks todo and " + todolist.countClosedTask() + " tasks are done!");
+        // todo fix this to the new method in TaskList
+        System.out.println("You have " + todolist.countTasks() + " tasks todo and " + todolist.countClosedTask() + " tasks are done!");
 
     }
 
@@ -102,7 +104,7 @@ public class UserInterface
             String title = (scanner.nextLine());
 
             System.out.println("Write a date in format DD/MM/YYYY for your task");
-            LocalDate date1 = validateDate();
+            LocalDate date1 = getStringDateSetLocalDate();
 
             System.out.println("Write a Project for your task:");
             String project = (scanner.nextLine());
@@ -120,7 +122,7 @@ public class UserInterface
     }
 
 
-    public LocalDate validateDate() {
+    public LocalDate getStringDateSetLocalDate() {
 
         /** Validates the date inserted by user, transforms to LocalDate type and passes to the
          * @param: date1 */
@@ -143,7 +145,7 @@ public class UserInterface
         return date1;
     }
 
-
+// todo: 14,Mar. Check logic after coding it all
     public void editTaskMenu() {
 
         // Step 1. display tasks
@@ -161,61 +163,52 @@ public class UserInterface
 
         // ask user to select what to edit (mark as done, remove or update field) or return to main menu
         System.out.println("Pick an editing option: ");
-        System.out.println("(1) Mark as done");
+        System.out.println("(1) Mark as closed");
         System.out.println("(2) Remove");
-        System.out.println("(3) Update field"); // todo: break this one in other fields directly?
-        System.out.println("(4) Changed my mind, return to Main Menu");
+        System.out.println("(3) Update field - Title -");
+        System.out.println("(4) Update field - Due Date -");
+        System.out.println("(5) Update field - Project Name -");
+        System.out.println("(6) Changed my mind, return to Main Menu");
+
 
         // Add a new validate for here for the Editing options below
-        int editOption = validateInt(1,4);
+        int editOption = validateInt(1, 6);
 
-        switch (editOption){
+        switch (editOption) {
 
             case 1:
                 taskToEdit.setStatus(true);
+                break;
             case 2:
-                // code remove inside the ...?
+                todolist.removeTask(taskToEdit);
+                break;
             case 3:
-
-
+                System.out.println("Write a new title for this task");
+                Scanner scanner = new Scanner(System.in);
+                // transform the input to string
+                String newTitle = scanner.nextLine();
+                taskToEdit.setTitle(newTitle);
+                break;
+            case 4:
+                System.out.println("Write a new Due Date for this task");
+                getStringDateSetLocalDate();
+                break;
+            case 5:
+                System.out.println("Write a new Project Name for this task");
+                Scanner scanner1 = new Scanner(System.in);
+                String newDate = scanner1.nextLine();
+                taskToEdit.setProjectName(newDate);
+                break;
+            case 6:
+                printMenu();
+                break;
         }
-
-        // TODO create a switch that connects to the other methods below
-        // int userOption = 1;
-        // switch
-        //  todolist.markasDone(taskToEdit);
-            // removeTask()
-            // ...
-
-    }
-// can go to the TaskList Class (or can stay here as well)
-    public void markDone() {
-        // change setStatus to false
-        // (?) re-add the task to the array: JUST CHANGING STATUS
-       // go back to Main Menu
-       //...
     }
 
-    // can go to the TaskList Class
-    public void removeTask() {
-        // take the task
-        // remove from Array
-        // go back to the main menu
 
-    }
+// todo: git commit "finished editTaskMenu"
 
-    public void updateField(){
-        // take the test
-        // Update field
 
-            // print "select which field to edit"
-            // print "enter new value"
-            // substitute the value
-            // (?) re-add the task to the Array: JUST CHANGING THE STATUS
-            // print "change sucessfull"
-            // go back to Welcome
-
-    }
 /**
 Validates user input based on dynamic min and max int. It also catches exception if the int input is not valid/within the available range.
  @param min: min integer of a set of options displayed to user

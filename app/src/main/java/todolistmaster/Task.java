@@ -67,12 +67,14 @@ public class Task implements Serializable {
         if (taskStatus == true){
             return status = "closed";
         }
+        // false
         return status = "open";
     }
 
     public boolean getStatus() {
         return taskStatus;
     }
+
 
 
     //TODO consider format for when I need to parse this data

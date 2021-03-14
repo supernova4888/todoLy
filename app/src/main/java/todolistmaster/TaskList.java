@@ -146,8 +146,9 @@ public class TaskList implements Serializable {
     }
 
 
+    public void removeTask(Task t) {
+
+    todolist2.remove(t);
+
+    }
 }
-
-    /*public void removeTask() {
-
-    }*/
