@@ -12,9 +12,11 @@ public class Main {
     public static void main(String[] args) {
 
         // display initial instruction of TodoLy
-        int userOption = 0;
+        //int userOption = 0;
 
         UserInterface app = new UserInterface();
+
+
 /*
         app.printWelcome();
         app.printStatus();
@@ -26,16 +28,18 @@ public class Main {
 
        // TaskList test = new TaskList();
 
-        Task t1 = new Task("t1,,,,,,,,,,,,,,,", LocalDate.now(),"brother");
-        Task t2 = new Task("duhhh", LocalDate.now(), "car");
-        Task t3 = new Task("lala", LocalDate.now(), "abc");
+        // todo re-change the global variables to private (Tasklist and LocalDate)
+        Task t1 = new Task("t1,,,,,,,,,,,,,,,", LocalDate.of(2020, 10,10),"brother");
+        Task t2 = new Task("duhhh", LocalDate.of(2020,05,01), "car");
+        Task t3 = new Task("lala", LocalDate.of(2020, 01,01), "abc");
 
-        ArrayList<Task> list = new ArrayList<>();
-        list.add(t1);
-        list.add(t2);
-        list.add(t3);
+        app.todolist.addToList(t1);
+        app.todolist.addToList(t2);
+        app.todolist.addToList(t3);
 
-        FileHandler fh = new FileHandler();
+        app.run();
+
+       /* FileHandler fh = new FileHandler();
         fh.writeAsData(list);
         //ArrayList<Task> dataList = fh.readAsData();
         //System.out.println(dataList);
@@ -44,6 +48,7 @@ public class Main {
         fh.writeAsObject(list);
         ArrayList<Task> objectList = fh.readAsObject();
         System.out.println(objectList);
+*/
 
 
        /* test.addToList(one);

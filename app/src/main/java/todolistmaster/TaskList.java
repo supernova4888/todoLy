@@ -43,24 +43,14 @@ public class TaskList implements Serializable {
     }
 
 
-    public void Sort(int x)
+    public void sort(int x)
     {
+        TaskComparator comp = new TaskComparator('d');
 
-        switch(x) {
-            case 1: // sort by duedate
-                sort(new TaskComparator('d'));
-                break;
-            case 2: // sort by project name
-                sort(new TaskComparator('p'));
-                break;
+        if (x == 2) {
+            comp = new TaskComparator('p');
         }
-    }
-
-
-    public void sort(Comparator<Task> c)
-    {
-        Collections.sort(todolist2, c);
-
+        Collections.sort(todolist2, comp);
     }
 
 
@@ -105,7 +95,7 @@ public class TaskList implements Serializable {
         int countOpenTasks = 0;
         int countClosedTasks = 0;
         for (int i = 0; i < todolist2.size(); i++){
-            if (todolist2.get(i).getStatus() == false) {
+            if (todolist2.get(i).getStatusAsBoolean() == false) {
                 countOpenTasks = countOpenTasks + 1;
             }
             else

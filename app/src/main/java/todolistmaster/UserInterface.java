@@ -20,7 +20,7 @@ public class UserInterface
     private Scanner scanner = new Scanner(System.in);
 
     // Object of type 'TaskList'. TaskList is an ArrayList that holds the Task objects.
-    private TaskList todolist = new TaskList();
+    public TaskList todolist = new TaskList();
 
 
     public void printWelcome()
@@ -34,7 +34,8 @@ public class UserInterface
     public void printStatus()
     {
         // todo fix this to the new method in TaskList
-        System.out.println("You have " + todolist.countTasks() + "tasks open and tasks closed, respectively");
+        int [] taskCounts = todolist.countTasks();
+        System.out.println("You have " + taskCounts[0] + " tasks open, " + taskCounts[1] + " tasks closed.");
                 //+ " tasks to-do and " + todolist.countClosedTask() + " tasks are done!");
 
     }
@@ -65,41 +66,41 @@ public class UserInterface
     }
 
 
-    public void showTask(int userOption)
+    public void showTask()
     {
-
-        if (userOption == 1) {
-
             System.out.println("in ShowTask");
 
             // should print the list in default order
             if (todolist.showTaskListWithoutIndex() == 0) {
                 System.out.println("The list is empty, nothing to show");
-                printMenu();
+                return;
             }
             // if showTaskList() != 0
             // execute the showTaskList code then show more sorting options
-            System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project");
+            System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project or (3) Changed my mind, return to Main Menu");
 
             // scanner to take in useroption - WORKS
-            userOption = validateInt(1, 2);
+            int userOption = validateInt(1, 3);
 
             // todo: some obscure error here, scanner doesnt reconize int 1 or 2 when passed to the list
             // userOption = Integer.parseInt(scanner.nextLine());
+            switch (userOption){
+                case 3:
+                    return;
+                default:
+                    todolist.sort(userOption);
+                    System.out.println(todolist.displayTaskWithIndex());
 
-            todolist.Sort(userOption);
-
-        }
-
+            }
     }
 
 
-    public void addTask(int userOption)
+    public void addTask()
     {
 
 
-        if (userOption == 2)
-        {
+        //if (userOption == 2)
+        //{
 
             System.out.println("Write a title for your task:");
             String title = (scanner.nextLine());
@@ -119,7 +120,7 @@ public class UserInterface
 
             printStatus();
 
-        }
+        //}
     }
 
 
@@ -150,7 +151,7 @@ public class UserInterface
     public void editTaskMenu() {
 
         // Step 1. display tasks
-        todolist.displayTaskWithIndex();
+        System.out.println(todolist.displayTaskWithIndex());
         // Step 2. ask user to type number of task she wants to edit
         System.out.println("Pick the number representing the task you want to edit: ");
 
@@ -179,9 +180,11 @@ public class UserInterface
 
             case 1:
                 taskToEdit.setStatus(true);
+                System.out.println("Status updated to: " + taskToEdit.getStatusString());
                 break;
             case 2:
                 todolist.removeTask(taskToEdit);
+                System.out.println("Successfully removed task");
                 break;
             case 3:
                 System.out.println("Write a new title for this task");
@@ -189,16 +192,20 @@ public class UserInterface
                 // transform the input to string
                 String newTitle = scanner.nextLine();
                 taskToEdit.setTitle(newTitle);
+                System.out.println("Title updated to: " + newTitle);
                 break;
             case 4:
                 System.out.println("Write a new Due Date for this task");
-                getStringDateSetLocalDate();
+                LocalDate newDate = getStringDateSetLocalDate();
+                taskToEdit.setDueDate(newDate);
+                System.out.println("Due Date updated to: " + newDate);
                 break;
             case 5:
                 System.out.println("Write a new Project Name for this task");
                 Scanner scanner1 = new Scanner(System.in);
-                String newDate = scanner1.nextLine();
-                taskToEdit.setProjectName(newDate);
+                String newProjectName = scanner1.nextLine();
+                taskToEdit.setProjectName(newProjectName);
+                System.out.println("Project Name updated to: " + newProjectName);
                 break;
             case 6:
                 printMenu();
@@ -243,18 +250,29 @@ Validates user input based on dynamic min and max int. It also catches exception
 
 
 // TODO this is the method that will make the program run - while true: loop, false: stops looping
-    public void callMethods(){
+    public void run() {
         // do while == true
         // or exit program
         boolean hasFinished = false;
 
-        while(hasFinished)
+        printWelcome();
+        printStatus();
+
+        while(!hasFinished)
         {
             int option = printMenu();
 
             switch (option)
             {
-                //case 1: addTask();
+                case 1:
+                    showTask();
+                    break;
+                case 2:
+                    addTask();
+                    break;
+                case 3:
+                    editTaskMenu();
+                    break;
                 case 4:
                     System.out.println("bye");
                     // save to file
