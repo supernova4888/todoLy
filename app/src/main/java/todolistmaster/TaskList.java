@@ -46,18 +46,16 @@ public class TaskList implements Serializable {
     public void Sort(int x)
     {
 
-        switch(x)
-        {
+        switch(x) {
             case 1: // sort by duedate
                 sort(new TaskComparator('d'));
                 break;
             case 2: // sort by project name
                 sort(new TaskComparator('p'));
                 break;
-                // TODO why cant i call printwelcome?
-            // ? create default , in case user changes his mind?
         }
     }
+
 
     public void sort(Comparator<Task> c)
     {
@@ -65,12 +63,13 @@ public class TaskList implements Serializable {
 
     }
 
+
     /**
     Append a number to each task and returns all tasks in the list
     */
     public String displayTaskWithIndex() {
-        //@param counter: ordered number to represent each task
 
+        //@param counter: ordered number to represent each task
         StringBuilder stringBuilder = new StringBuilder();
 
         if (todolist2.size() == 0) {
@@ -85,23 +84,27 @@ public class TaskList implements Serializable {
         }
     }
 
+
     /** Count total of tasks open that will be updated as the users interacts with the app*/
 
     public int[] countTasks()
     {
-        int countOpen = 0;
-        int closedTask = 0;
+        // 'open' Task = false : All tasks are created with 'open' status
+        // 'closed' Task = true
+        int countOpenTasks = 0;
+        int countClosedTasks = 0;
         for (int i = 0; i < todolist2.size(); i++){
             if (todolist2.get(i).getStatus() == false) {
-                countOpen = countOpen + 1;
+                countOpenTasks = countOpenTasks + 1;
             }
             else
-                closedTask++;
+                countClosedTasks++;
         }
-        return new int[]{countOpen, closedTask};
+        return new int[]{countOpenTasks, countClosedTasks};
     }
 
-
+    // old format of CountOpenTask and CountClosedTask
+    /*
     public int countOpenTask()
     {
         int countOpen = 0;
@@ -113,7 +116,7 @@ public class TaskList implements Serializable {
         return countOpen;
     }
 
-    /** Count total of tasks closed that will be updated as the users interacts with the app*/
+    // Count total of tasks closed that will be updated as the users interacts with the app
     public int countClosedTask()
     {
         int countClosed = 0;
@@ -123,14 +126,13 @@ public class TaskList implements Serializable {
             }
         }
         return countClosed;
-    }
+    }*/
+
 
     public int maxSize()
     {
         return todolist2.size();
     }
-
-
 
 
 }

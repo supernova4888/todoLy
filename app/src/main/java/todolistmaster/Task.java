@@ -1,8 +1,6 @@
 package todolistmaster;
 import java.io.Serializable;
-import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /**
 // Class Task represents one task and all its fields. Several tasks will compose an ArrayList, which is in the Todolist class
@@ -20,7 +18,7 @@ public class Task implements Serializable {
 
     public Task() {}
 
-    // TODO does the constructor works with my new date format?
+
     public Task(String title, LocalDate date1, String projectName) {
         this.title = title;
         // this.dueDate = dueDate;

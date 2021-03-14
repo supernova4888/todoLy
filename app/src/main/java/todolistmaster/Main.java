@@ -1,12 +1,11 @@
 package todolistmaster;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 /** This is where the program runs. This class calls the objects, instantiate and use/call methods for the todolist app execution in appropriate order
  **/
 
-// TODO btw: what is the app package here? is that just a test one?
+// TODO btw: what is the app package in my project?
 
 public class Main {
 

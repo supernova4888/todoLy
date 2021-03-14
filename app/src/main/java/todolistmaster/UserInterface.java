@@ -14,7 +14,11 @@ import java.util.Scanner;
 
 public class UserInterface
 {
+
+    // global variables
     private Scanner scanner = new Scanner(System.in);
+
+    // Object of type 'TaskList'. TaskList is an ArrayList that holds the Task objects.
     private TaskList todolist = new TaskList();
 
 
@@ -22,6 +26,7 @@ public class UserInterface
     {
         System.out.println();
         System.out.println("Welcome to ToDoLy");
+
     }
 
 
@@ -43,14 +48,15 @@ public class UserInterface
 
         // this method connects  to the one below
         int userOption = validateInt(1,4);
+
+        // todo: why this is returning userOption?
         return userOption;
     }
 
 
     public void printBye()
     {
-        // TODO
-        // connect to file handler - to savefile
+        // TODO connect to file handler - to savefile
         // do i need to close all scanners here?
         System.out.println("See you later alligator!");
     }
@@ -58,16 +64,6 @@ public class UserInterface
 
     public void showTask(int userOption)
     {
-
-        // Step 1. print the current list of tasks (= collection)
-            // this is showing position in memory. Check Task Class again
-        // tried:
-            //todolist.showTaskList(todolist.todolist2);
-            // todolist.getTodolist2();
-            // showtasklist w/o the for loop
-            // showtasklist w/ for loop: it didnt return aything
-            // print each object of the todolist (type tasklist)
-            // last try: created internal method, call tasks, but no tasks were printed
 
         if (userOption == 1) {
 
@@ -85,11 +81,11 @@ public class UserInterface
             // scanner to take in useroption - WORKS
             userOption = validateInt(1, 2);
 
-            // some obscure error here, scanner doesnt reconize int 1 or 2 when passed to the list
+            // todo: some obscure error here, scanner doesnt reconize int 1 or 2 when passed to the list
             // userOption = Integer.parseInt(scanner.nextLine());
 
             todolist.Sort(userOption);
-            printMenu();
+
         }
 
     }
@@ -101,8 +97,6 @@ public class UserInterface
 
         if (userOption == 2)
         {
-            // instantiate Task
-            //Task newTask = new Task();
 
             System.out.println("Write a title for your task:");
             String title = (scanner.nextLine());
@@ -113,6 +107,7 @@ public class UserInterface
             System.out.println("Write a Project for your task:");
             String project = (scanner.nextLine());
 
+            // instantiate Task with constructor
             Task newTask = new Task(title, date1, project);
             System.out.println(newTask.toString());
             todolist.addToList(newTask);
@@ -120,11 +115,10 @@ public class UserInterface
             System.out.println("Task successfully saved to list");
 
             printStatus();
-            // TODO test if it loops properly to the Main Menu. It doesnt, it crashes after a couple of times.
-            printMenu();
 
         }
     }
+
 
     public LocalDate validateDate() {
 
@@ -139,7 +133,6 @@ public class UserInterface
 
             try {
                 dueDate = (scanner.nextLine());
-                // ** Removed type LocalDate
                 date1 = LocalDate.parse(dueDate, formatter);
                 success = false;
 
@@ -212,8 +205,11 @@ public class UserInterface
             // go back to Welcome
 
     }
-
-
+/**
+Validates user input based on dynamic min and max int. It also catches exception if the int input is not valid/within the available range.
+ @param min: min integer of a set of options displayed to user
+ @param max: max integer of a set of options displayed to user
+ */
 
 // i should create one for each type. ValidateInt for user options. I need a validateString for ???
     public int validateInt(int min, int max)
@@ -223,6 +219,7 @@ public class UserInterface
             try
             {
                 int userInput = Integer.parseInt(scanner.nextLine());
+
                 if (userInput < min) {
                     System.out.println("You entered a number below" + min +"Please enter a number between" + min + "-" + max + ", inclusive");
                     continue;
@@ -232,6 +229,7 @@ public class UserInterface
                     continue;
                 }
                 return userInput;
+                // todo: do i need to 'exit' the while loop or this is enough?
             }
             // catch if they enter wrong number or string rather than a valid int
             catch(NumberFormatException e )
@@ -240,6 +238,8 @@ public class UserInterface
             }
         }
     }
+
+
 // TODO this is the method that will make the program run - while true: loop, false: stops looping
     public void callMethods(){
         // do while == true
@@ -266,7 +266,7 @@ public class UserInterface
 
     /*public void saveQuit() {
         // save to txt file
-        // exit program. What does exit program means?
+        // exit program.
         TODO - this just exists everyhting
         there are a couple ways i can exit
              // type system.exit (0)

@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9574974-747d-4465-978c-9ff0c8d9e2ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.3/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.3/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.3/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.3/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" afterDir="false" />
     </list>
