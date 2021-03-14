@@ -84,9 +84,20 @@ public class TaskList implements Serializable {
         }
     }
 
+    // todo: NEW 14/march, needs to be checked
+    public Task getTaskAtIndex(int taskIndex) {
+
+        Task taskToEdit = new Task();
+        taskToEdit = todolist2.get(taskIndex);
+        return taskToEdit;
+
+    }
+
+
 
     /** Count total of tasks open that will be updated as the users interacts with the app*/
 
+    //todo: check if this is incorporated correctly in the count tasks menu (and after each user interaction)
     public int[] countTasks()
     {
         // 'open' Task = false : All tasks are created with 'open' status

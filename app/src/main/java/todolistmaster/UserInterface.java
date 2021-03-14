@@ -147,27 +147,38 @@ public class UserInterface
     public void editTaskMenu() {
 
         // Step 1. display tasks
-        // Step 2. ask user to type number of task she wants to edit
         todolist.displayTaskWithIndex();
+        // Step 2. ask user to type number of task she wants to edit
         System.out.println("Pick the number representing the task you want to edit: ");
 
-        // Step 3. ask user to select what to edit (mark as done, remove or update field) or return to main menu
-
-        // get the task;
+        // get the index of the task after validating the user input and store in @param: taskIndex
         int taskIndex = validateInt(1, todolist.maxSize()) - 1;
-        // Add a new validate for here for the Editing options below
 
-        // Review if this 'call' actually works
-        //Task taskToEdit = todolist.getTaskAtIndex(taskIndex)
+        // Get the Task based on the index
+        Task taskToEdit = todolist.getTaskAtIndex(taskIndex);
+        // print the task to command line
+        taskToEdit.toString();
 
-        // or this?
-        //todolist.getTask();
-
+        // ask user to select what to edit (mark as done, remove or update field) or return to main menu
         System.out.println("Pick an editing option: ");
         System.out.println("(1) Mark as done");
         System.out.println("(2) Remove");
-        System.out.println("(3) Update field");
+        System.out.println("(3) Update field"); // todo: break this one in other fields directly?
         System.out.println("(4) Changed my mind, return to Main Menu");
+
+        // Add a new validate for here for the Editing options below
+        int editOption = validateInt(1,4);
+
+        switch (editOption){
+
+            case 1:
+                taskToEdit.setStatus(true);
+            case 2:
+                // code remove inside the ...?
+            case 3:
+
+
+        }
 
         // TODO create a switch that connects to the other methods below
         // int userOption = 1;
