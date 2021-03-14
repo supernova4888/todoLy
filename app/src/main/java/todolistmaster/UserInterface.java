@@ -1,4 +1,5 @@
 package todolistmaster;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -12,15 +13,14 @@ import java.util.Scanner;
 
 // TODO loop the app and allow for adding tasks, editing, etc. without crashing. See method #printmenu
 
-public class UserInterface
+public class UserInterface implements Serializable
 {
 
     // global variables
-    // todo: should i have Scanner as global variable or within each method body? pro/cons?
-    private Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    // Object of type 'TaskList'. TaskList is an ArrayList that holds the Task objects.
-    public TaskList todolist = new TaskList();
+    // Object of type 'TaskList'. TaskList is a custom object of type ArrayList that holds the Task objects.
+    private final TaskList collection = new TaskList();
 
 
     public void printWelcome()
@@ -34,7 +34,7 @@ public class UserInterface
     public void printStatus()
     {
         // todo fix this to the new method in TaskList
-        int [] taskCounts = todolist.countTasks();
+        int [] taskCounts = collection.countTasks();
         System.out.println("You have " + taskCounts[0] + " tasks open, " + taskCounts[1] + " tasks closed.");
                 //+ " tasks to-do and " + todolist.countClosedTask() + " tasks are done!");
 
@@ -51,115 +51,93 @@ public class UserInterface
         System.out.println("(4) Save and Quit");
 
         // this method connects  to the one below
-        int userOption = validateInt(1,4);
-
-        // todo: why this is returning userOption?
-        return userOption;
+        return validateInt(1,4);
     }
 
-
-    public void printBye()
-    {
-        // TODO connect to file handler - to savefile
-        // do i need to close all scanners here?
-        System.out.println("See you later alligator!");
-    }
 
 
     public void showTask()
     {
-            System.out.println("in ShowTask");
+        System.out.println("in ShowTask");
 
-            // should print the list in default order
-            if (todolist.showTaskListWithoutIndex() == 0) {
-                System.out.println("The list is empty, nothing to show");
-                return;
-            }
-            // if showTaskList() != 0
-            // execute the showTaskList code then show more sorting options
-            System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project or (3) Changed my mind, return to Main Menu");
+        // should print the list in default order
+        if (collection.showTaskListWithoutIndex() == 0) {
+            System.out.println("The list is empty, nothing to show");
+            return;
+        }
+        // if showTaskList() != 0
+        // execute the showTaskList code then show more sorting options
+        System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project or (3) Changed my mind, return to Main Menu");
 
-            // scanner to take in useroption - WORKS
-            int userOption = validateInt(1, 3);
+        int userOption = validateInt(1, 3);
 
-            // todo: some obscure error here, scanner doesnt reconize int 1 or 2 when passed to the list
-            // userOption = Integer.parseInt(scanner.nextLine());
-            switch (userOption){
-                case 3:
-                    return;
-                default:
-                    todolist.sort(userOption);
-                    System.out.println(todolist.displayTaskWithIndex());
-
-            }
+        if (userOption == 3) {
+            return;
+        } else {
+            collection.sort(userOption);
+            System.out.println(collection.displayTaskWithIndex());
+        }
     }
 
 
     public void addTask()
     {
 
+        System.out.println("Write a title for your task:");
+        String title = (scanner.nextLine());
 
-        //if (userOption == 2)
-        //{
+        System.out.println("Write a date in format DD/MM/YYYY for your task");
+        LocalDate date1 = getStringDateSetLocalDate();
 
-            System.out.println("Write a title for your task:");
-            String title = (scanner.nextLine());
+        System.out.println("Write a Project for your task:");
+        String project = (scanner.nextLine());
 
-            System.out.println("Write a date in format DD/MM/YYYY for your task");
-            LocalDate date1 = getStringDateSetLocalDate();
+        // instantiate Task with constructor
+        Task newTask = new Task(title, date1, project);
+        System.out.println(newTask.toString());
+        collection.addToList(newTask);
 
-            System.out.println("Write a Project for your task:");
-            String project = (scanner.nextLine());
+        System.out.println("Task successfully saved to list");
 
-            // instantiate Task with constructor
-            Task newTask = new Task(title, date1, project);
-            System.out.println(newTask.toString());
-            todolist.addToList(newTask);
+        printStatus();
 
-            System.out.println("Task successfully saved to list");
-
-            printStatus();
-
-        //}
     }
 
 
     public LocalDate getStringDateSetLocalDate() {
 
-        /** Validates the date inserted by user, transforms to LocalDate type and passes to the
-         * @param: date1 */
+    // Validates the dateLocalDate inserted by user, transforms to LocalDate type and passes to the @param: dateLocalDate */
 
         String dueDate;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date1 = null;
+        LocalDate dateLocalDate = null;
         boolean success = true;
         while (success) {
 
             try {
                 dueDate = (scanner.nextLine());
-                date1 = LocalDate.parse(dueDate, formatter);
+                dateLocalDate = LocalDate.parse(dueDate, formatter);
                 success = false;
 
             } catch (DateTimeParseException e) {
-                System.out.println("The value for date, month or year is invalid");
+                System.out.println("The value for dateLocalDate, month or year is invalid");
             }
         }
-        return date1;
+        return dateLocalDate;
     }
 
-// todo: 14,Mar. Check logic after coding it all
     public void editTaskMenu() {
 
         // Step 1. display tasks
-        System.out.println(todolist.displayTaskWithIndex());
+        System.out.println(collection.displayTaskWithIndex());
         // Step 2. ask user to type number of task she wants to edit
         System.out.println("Pick the number representing the task you want to edit: ");
 
         // get the index of the task after validating the user input and store in @param: taskIndex
-        int taskIndex = validateInt(1, todolist.maxSize()) - 1;
+        int taskIndex = validateInt(1, collection.maxSize()) - 1;
 
         // Get the Task based on the index
-        Task taskToEdit = todolist.getTaskAtIndex(taskIndex);
+        Task taskToEdit = collection.getTaskAtIndex(taskIndex);
         // print the task to command line
         taskToEdit.toString();
 
@@ -176,40 +154,37 @@ public class UserInterface
         // Add a new validate for here for the Editing options below
         int editOption = validateInt(1, 6);
 
+        // transform the input to string
         switch (editOption) {
-
-            case 1:
+            case 1 -> {
                 taskToEdit.setStatus(true);
                 System.out.println("Status updated to: " + taskToEdit.getStatusString());
-                break;
-            case 2:
-                todolist.removeTask(taskToEdit);
+            }
+            case 2 -> {
+                collection.removeTask(taskToEdit);
                 System.out.println("Successfully removed task");
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Write a new title for this task");
                 Scanner scanner = new Scanner(System.in);
-                // transform the input to string
                 String newTitle = scanner.nextLine();
                 taskToEdit.setTitle(newTitle);
                 System.out.println("Title updated to: " + newTitle);
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Write a new Due Date for this task");
                 LocalDate newDate = getStringDateSetLocalDate();
                 taskToEdit.setDueDate(newDate);
                 System.out.println("Due Date updated to: " + newDate);
-                break;
-            case 5:
+            }
+            case 5 -> {
                 System.out.println("Write a new Project Name for this task");
                 Scanner scanner1 = new Scanner(System.in);
                 String newProjectName = scanner1.nextLine();
                 taskToEdit.setProjectName(newProjectName);
                 System.out.println("Project Name updated to: " + newProjectName);
-                break;
-            case 6:
-                printMenu();
-                break;
+            }
+            case 6 -> printMenu();
         }
     }
 
@@ -249,13 +224,12 @@ Validates user input based on dynamic min and max int. It also catches exception
     }
 
 
-// TODO this is the method that will make the program run - while true: loop, false: stops looping
     public void run() {
 
         boolean hasFinished = false;
 
-        FileHandler openWhenStart = new FileHandler();
-        openWhenStart.readAsObject();
+        FileHandler file = new FileHandler();
+        file.readAsObject();
         printWelcome();
         printStatus();
 
@@ -263,22 +237,17 @@ Validates user input based on dynamic min and max int. It also catches exception
         {
             int option = printMenu();
 
-            switch (option)
-            {
-                case 1:
-                    showTask();
-                    break;
-                case 2:
-                    addTask();
-                    break;
-                case 3:
-                    editTaskMenu();
-                    break;
-                case 4:
-                    FileHandler writeWhenExit = new FileHandler();
-                    writeWhenExit.writeAsObject(todolist.todolist2);
-                    System.out.println("bye");
+            switch (option) {
+                case 1 -> showTask();
+                case 2 -> addTask();
+                case 3 -> editTaskMenu();
+                case 4 -> {
+                    //Todo file handler is saving and then reading correctly. Only the counter is not working.
+
+                    file.writeAsObject(collection.list);
+                    System.out.println("Bye. See you later alligator!");
                     hasFinished = true;
+                }
             }
 
         }

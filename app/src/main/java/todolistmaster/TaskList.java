@@ -12,18 +12,12 @@ import java.util.*;
 public class TaskList implements Serializable {
 
     // ArrayList to hold collection of tasks
-    ArrayList<Task> todolist2 = new ArrayList<>();
+    ArrayList<Task> list = new ArrayList<>();
 
-
-// changed to void. Before: ArrayList
-    public void getTodolist2() {
-        System.out.println(todolist2);
-        //return todolist2;
-    }
 
     /** Adds a new task to the ArrayList */
     public void addToList(Task task) {
-        todolist2.add(task);
+        list.add(task);
     }
 
 
@@ -32,10 +26,10 @@ public class TaskList implements Serializable {
         // for all items in the list, loop
         System.out.println("in showTaskList");
 
-        if (todolist2.size() == 0) {
+        if (list.size() == 0) {
             return 0;
         }
-        for (Task task : todolist2)
+        for (Task task : list)
         {
             System.out.println(task);
         }
@@ -50,7 +44,7 @@ public class TaskList implements Serializable {
         if (x == 2) {
             comp = new TaskComparator('p');
         }
-        Collections.sort(todolist2, comp);
+        Collections.sort(list, comp);
     }
 
 
@@ -62,14 +56,12 @@ public class TaskList implements Serializable {
         //@param counter: ordered number to represent each task
         StringBuilder stringBuilder = new StringBuilder();
 
-        if (todolist2.size() == 0) {
+        if (list.size() == 0) {
             return "Your task list is empty";
         } else
             {
-            for (int i = 0; i < todolist2.size(); i++) {
-                stringBuilder.append("\n (" + (i+1) + ") " + todolist2.get(i));
-                // System.out.println(counter + "- " + todolist2.get(i));
-            }
+            for (int i = 0; i < list.size(); i++) {
+                stringBuilder.append("\n (" + (i+1) + ") " + list.get(i)); }
             return stringBuilder.toString();
         }
     }
@@ -77,8 +69,8 @@ public class TaskList implements Serializable {
     // todo: NEW 14/march, needs to be checked
     public Task getTaskAtIndex(int taskIndex) {
 
-        Task taskToEdit = new Task();
-        taskToEdit = todolist2.get(taskIndex);
+        Task taskToEdit;
+        taskToEdit = list.get(taskIndex);
         return taskToEdit;
 
     }
@@ -94,53 +86,23 @@ public class TaskList implements Serializable {
         // 'closed' Task = true
         int countOpenTasks = 0;
         int countClosedTasks = 0;
-        for (int i = 0; i < todolist2.size(); i++){
-            if (todolist2.get(i).getStatusAsBoolean() == false) {
+        for (Task task : list) {
+            if (!task.getStatusAsBoolean()) {
                 countOpenTasks = countOpenTasks + 1;
-            }
-            else
+            } else
                 countClosedTasks++;
         }
         int[] totalTaskCount = {countOpenTasks, countClosedTasks};
         return totalTaskCount;
-
     }
 
-    // old format of CountOpenTask and CountClosedTask
-    /*
-    public int countOpenTask()
-    {
-        int countOpen = 0;
-        for (int i = 0; i < todolist2.size(); i++){
-            if (todolist2.get(i).getStatus() == false) {
-                countOpen = countOpen + 1;
-            }
-        }
-        return countOpen;
-    }
 
-    // Count total of tasks closed that will be updated as the users interacts with the app
-    public int countClosedTask()
-    {
-        int countClosed = 0;
-        for (int i = 0; i < todolist2.size(); i++){
-            if (todolist2.get(i).getStatus() == true) {
-                countClosed = countClosed + 1;
-            }
-        }
-        return countClosed;
-    }*/
-
-
-    public int maxSize()
-    {
-        return todolist2.size();
+    public int maxSize() {
+        return list.size();
     }
 
 
     public void removeTask(Task t) {
-
-    todolist2.remove(t);
-
+        list.remove(t);
     }
 }

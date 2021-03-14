@@ -8,7 +8,7 @@ This is where all the transactions with the file will occur: open, read, write, 
  be here or somewhere else)
  The aim is to save as Object in a txt file*/
 
-public class FileHandler {
+public class FileHandler implements Serializable {
 
 
     // fields
@@ -17,20 +17,20 @@ public class FileHandler {
     private static final String path = "app/src/main/resources/";
 
 
-//TODO to be tested
+//TODO to be tested - check the unchecked cast
 
     public void writeAsObject(ArrayList<Task> list)
     {
         try {
             // FileOutputStream writes stream of raw bytes. And requires the construction of the OutputStreamWriter
-            FileOutputStream fileStream = new FileOutputStream(path +"objectFile.txt");
-            ObjectOutputStream writer = new ObjectOutputStream(fileStream);
+            FileOutputStream fileStreamOne = new FileOutputStream(path +"objectFile.txt");
+            ObjectOutputStream writer = new ObjectOutputStream(fileStreamOne);
 
             // writes objects to writer stream
             writer.writeObject(list);
 
             writer.close();
-            fileStream.close();
+            fileStreamOne.close();
 
         }
         catch(IOException e)
@@ -39,24 +39,25 @@ public class FileHandler {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public ArrayList<Task> readAsObject() {
 
         ArrayList<Task> list = new ArrayList<>();
 
         try {
             // FileOutputStream writes stream of raw bytes. And requires the construction of the OutputStreamWriter
-            FileInputStream fileStream = new FileInputStream(path +"objectFile.txt");
-            ObjectInputStream reader = new ObjectInputStream(fileStream);
+            FileInputStream fileStreamTwo = new FileInputStream(path +"objectFile.txt");
+            ObjectInputStream reader = new ObjectInputStream(fileStreamTwo);
 
-            // writes objects to writer stream
-            Object obj = reader.readObject();
-
-            list = (ArrayList<Task>) obj;
-
-            //list = (ArrayList<Task>) reader.readObject();
+            // reads objects to writer stream
+            list = (ArrayList<Task>) reader.readObject();
             System.out.println("The file is opened and read");
+
+            System.out.println(list);
+
+
             reader.close();
-            fileStream.close();
+            fileStreamTwo.close();
 
             }
             catch(IOException e)
@@ -70,70 +71,4 @@ public class FileHandler {
         return list;
 
     }
-
-
-
-
-
-
-/*
-
-    // when i read i open and close, so i might not need this one
-    public void writeAsData(ArrayList<Task> list)
-    {
-        try
-        {
-            File file = new File(path+"dataFile.txt");
-            FileWriter fileWriter = new FileWriter(file);
-            BufferedWriter br = new BufferedWriter(fileWriter);
-
-            for (Task task : list) {
-                br.write(task.toString() + "\n");
-            }
-
-            br.close();
-        }
-        catch (IOException e)
-        {
-            System.out.println("File is not found " + e.toString());
-        }
-    }
-
-// read file as Data
-    public ArrayList<Task> readAsData()
-    {
-        ArrayList<Task> list = new ArrayList<>();
-
-        try
-        {
-            FileReader fileReader = new FileReader(new File(path+"dataFile.txt"));
-            BufferedReader br = new BufferedReader(fileReader);
-
-            //Title: t1, Project: brother, Due date: 2021-03-13, Status: false
-            String line = "";
-            String[] data;
-            while ((line = br.readLine()) != null)
-            {
-                data = line.split(",");
-                String title = data[0].substring("Title: ".length()); // Title: t1
-                String project = data[1].substring(" Project: ".length());
-                LocalDate localDate = LocalDate.now(); //date[2] // " Due date: "
-                boolean status = Boolean.parseBoolean(data[3].substring(" Status: ".length()));
-
-                Task a = new Task(title, localDate, project);
-                a.setStatus(status);
-                list.add(a);
-            }
-
-            br.close();
-        }
-        catch (IOException e)
-        {
-            System.out.println("File is not found " + e);
-        }
-        return list;
-    }
-*/
-
-
 }

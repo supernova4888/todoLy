@@ -12,10 +12,10 @@ public class Task implements Serializable {
     private String title;
     private String projectName;
     private boolean taskStatus;
-    public LocalDate date;
+    private LocalDate date;
+
 
     public Task() {}
-
 
     public Task(String title, LocalDate date1, String projectName) {
         this.title = title;

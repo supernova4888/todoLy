@@ -4,7 +4,7 @@ import java.util.Comparator;
 public class TaskComparator implements Comparator<Task>
 {
 
-    private char type;
+    private final char type;
 
 
     public TaskComparator(char type)
