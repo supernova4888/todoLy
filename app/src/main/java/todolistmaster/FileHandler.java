@@ -1,9 +1,6 @@
 package todolistmaster;
-
 import java.io.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.io.File;
 
 /***
 This is where all the transactions with the file will occur: open, read, write, save and close.
@@ -17,20 +14,20 @@ public class FileHandler {
     // fields
     // Using txt file and absolute path
 
-    private String path = "app/src/main/resources/";
+    private static final String path = "app/src/main/resources/";
 
 
-//TODO not tested yet, just pseudocode
+//TODO to be tested
 
     public void writeAsObject(ArrayList<Task> list)
     {
         try {
             // FileOutputStream writes stream of raw bytes. And requires the construction of the OutputStreamWriter
-            FileOutputStream fileStream = new FileOutputStream(new File(path +"objectFile.txt"));
+            FileOutputStream fileStream = new FileOutputStream(path +"objectFile.txt");
             ObjectOutputStream writer = new ObjectOutputStream(fileStream);
 
             // writes objects to writer stream
-            writer.writeObject(list); //list
+            writer.writeObject(list);
 
             writer.close();
             fileStream.close();
@@ -42,29 +39,34 @@ public class FileHandler {
         }
     }
 
-    // might not need this one
-    public ArrayList<Task> readAsObject()
-    {
+    public ArrayList<Task> readAsObject() {
+
         ArrayList<Task> list = new ArrayList<>();
+
         try {
             // FileOutputStream writes stream of raw bytes. And requires the construction of the OutputStreamWriter
-            FileInputStream fileStream = new FileInputStream(new File(path +"objectFile.txt"));
+            FileInputStream fileStream = new FileInputStream(path +"objectFile.txt");
             ObjectInputStream reader = new ObjectInputStream(fileStream);
 
             // writes objects to writer stream
-            list = (ArrayList<Task>) reader.readObject();
+            Object obj = reader.readObject();
+
+            list = (ArrayList<Task>) obj;
+
+            //list = (ArrayList<Task>) reader.readObject();
+            System.out.println("The file is opened and read");
             reader.close();
             fileStream.close();
 
-        }
-        catch(IOException e)
-        {
-            System.out.println("File not found" + e);
-        }
-        catch ( ClassNotFoundException e)
-        {
-            System.out.println("problem with reading the content of the file");
-        }
+            }
+            catch(IOException e)
+            {
+                System.out.println("File not found" + e);
+            }
+            catch (ClassNotFoundException e)
+            {
+                System.out.println("Problem with reading the content of the file");
+            }
         return list;
 
     }
@@ -74,6 +76,7 @@ public class FileHandler {
 
 
 
+/*
 
     // when i read i open and close, so i might not need this one
     public void writeAsData(ArrayList<Task> list)
@@ -130,6 +133,7 @@ public class FileHandler {
         }
         return list;
     }
+*/
 
 
 }

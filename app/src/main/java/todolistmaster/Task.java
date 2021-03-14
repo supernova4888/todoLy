@@ -19,7 +19,6 @@ public class Task implements Serializable {
 
     public Task(String title, LocalDate date1, String projectName) {
         this.title = title;
-        // this.dueDate = dueDate;
         this.date = date1;
         this.projectName = projectName;
         this.taskStatus = false;
@@ -27,8 +26,8 @@ public class Task implements Serializable {
 
 
     // Define getters & setters for each attribute
-    public String setTitle(String title) {
-        return this.title = title;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 

@@ -251,10 +251,11 @@ Validates user input based on dynamic min and max int. It also catches exception
 
 // TODO this is the method that will make the program run - while true: loop, false: stops looping
     public void run() {
-        // do while == true
-        // or exit program
+
         boolean hasFinished = false;
 
+        FileHandler openWhenStart = new FileHandler();
+        openWhenStart.readAsObject();
         printWelcome();
         printStatus();
 
@@ -274,24 +275,14 @@ Validates user input based on dynamic min and max int. It also catches exception
                     editTaskMenu();
                     break;
                 case 4:
+                    FileHandler writeWhenExit = new FileHandler();
+                    writeWhenExit.writeAsObject(todolist.todolist2);
                     System.out.println("bye");
-                    // save to file
-                    //System.exit(0);
                     hasFinished = true;
             }
 
         }
 
     }
-
-    /*public void saveQuit() {
-        // save to txt file
-        // exit program.
-        TODO - this just exists everyhting
-        there are a couple ways i can exit
-             // type system.exit (0)
-    }*/
-
-
 }
 
