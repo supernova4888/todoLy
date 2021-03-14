@@ -229,7 +229,7 @@ Validates user input based on dynamic min and max int. It also catches exception
         boolean hasFinished = false;
 
         FileHandler file = new FileHandler();
-        file.readAsObject();
+        collection.list = file.readAsObject();
         printWelcome();
         printStatus();
 
