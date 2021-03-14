@@ -34,7 +34,8 @@ public class UserInterface
     public void printStatus()
     {
         // todo fix this to the new method in TaskList
-        System.out.println("You have " + todolist.countTasks() + " tasks todo and " + todolist.countClosedTask() + " tasks are done!");
+        System.out.println("You have " + todolist.countTasks() + "tasks open and tasks closed, respectively");
+                //+ " tasks to-do and " + todolist.countClosedTask() + " tasks are done!");
 
     }
 
@@ -204,9 +205,6 @@ public class UserInterface
                 break;
         }
     }
-
-
-// todo: git commit "finished editTaskMenu"
 
 
 /**

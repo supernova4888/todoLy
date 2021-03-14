@@ -111,7 +111,9 @@ public class TaskList implements Serializable {
             else
                 countClosedTasks++;
         }
-        return new int[]{countOpenTasks, countClosedTasks};
+        int[] totalTaskCount = {countOpenTasks, countClosedTasks};
+        return totalTaskCount;
+
     }
 
     // old format of CountOpenTask and CountClosedTask

@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9574974-747d-4465-978c-9ff0c8d9e2ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" afterDir="false" />
     </list>
