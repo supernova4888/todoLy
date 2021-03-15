@@ -16,8 +16,7 @@ class UserInterfaceTest {
     void addTask() {
 
     // emulate adding 1 task to Tasklist
-
-
+        
 
     }
 
@@ -35,10 +34,4 @@ class UserInterfaceTest {
 
     }
 
-    @Test
-    void run() {
-
-        // how do i test this one???
-
-    }
 }
