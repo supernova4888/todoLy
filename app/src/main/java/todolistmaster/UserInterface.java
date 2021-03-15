@@ -24,17 +24,13 @@ public class UserInterface implements Serializable
     {
         System.out.println();
         System.out.println("Welcome to ToDoLy");
-
     }
 
 
     public void printStatus()
     {
-        // todo fix this to the new method in TaskList
         int [] taskCounts = collection.countTasks();
         System.out.println("You have " + taskCounts[0] + " tasks open, " + taskCounts[1] + " tasks closed.");
-                //+ " tasks to-do and " + todolist.countClosedTask() + " tasks are done!");
-
     }
 
 
@@ -52,6 +48,18 @@ public class UserInterface implements Serializable
     }
 
 
+    // ask user to select what to edit
+    public void displayEditOptions()
+    {
+        System.out.println("Pick an editing option: ");
+        System.out.println("(1) Mark as closed");
+        System.out.println("(2) Remove");
+        System.out.println("(3) Update field - Title -");
+        System.out.println("(4) Update field - Due Date -");
+        System.out.println("(5) Update field - Project Name -");
+        System.out.println("(6) Changed my mind, return to Main Menu");
+    }
+
 
     public void showTask()
     {
@@ -62,8 +70,7 @@ public class UserInterface implements Serializable
             System.out.println("The list is empty, nothing to show");
             return;
         }
-        // if showTaskList() != 0
-        // execute the showTaskList code then show more sorting options
+        // if showTaskList() != 0 executes the showTaskList method then show more sorting options
         System.out.println("Type (1) to sort by due date or (2) to sort alphabetically by project or (3) Changed my mind, return to Main Menu");
 
         int userOption = validateInt(1, 3);
@@ -79,7 +86,6 @@ public class UserInterface implements Serializable
 
     public void addTask()
     {
-
         System.out.println("Write a title for your task:");
         String title = (scanner.nextLine());
 
@@ -95,9 +101,7 @@ public class UserInterface implements Serializable
         collection.addToList(newTask);
 
         System.out.println("Task successfully saved to list");
-
         printStatus();
-
     }
 
 
@@ -138,15 +142,8 @@ public class UserInterface implements Serializable
         // print the task to command line
         taskToEdit.toString();
 
-        // ask user to select what to edit (mark as done, remove or update field) or return to main menu
-        System.out.println("Pick an editing option: ");
-        System.out.println("(1) Mark as closed");
-        System.out.println("(2) Remove");
-        System.out.println("(3) Update field - Title -");
-        System.out.println("(4) Update field - Due Date -");
-        System.out.println("(5) Update field - Project Name -");
-        System.out.println("(6) Changed my mind, return to Main Menu");
-
+        // ask user to select what to edit
+        displayEditOptions();
 
         // Add a new validate for here for the Editing options below
         int editOption = validateInt(1, 6);
@@ -186,6 +183,7 @@ public class UserInterface implements Serializable
     }
 
 
+
 /**
 Validates user input based on dynamic min and max int. It also catches exception if the int input is not valid/within the available range.
  @param min: min integer of a set of options displayed to user
@@ -212,7 +210,7 @@ Validates user input based on dynamic min and max int. It also catches exception
                 return userInput;
                 // todo: do i need to 'exit' the while loop or this is enough?
             }
-            // catch if they enter wrong number or string rather than a valid int
+            // catch if they enter string or other wrong format rather than a valid int
             catch(NumberFormatException e )
             {
                 System.out.println("Format invalid. Please enter a number between" + min + "-" + max + ", inclusive");
@@ -239,16 +237,12 @@ Validates user input based on dynamic min and max int. It also catches exception
                 case 2 -> addTask();
                 case 3 -> editTaskMenu();
                 case 4 -> {
-                    //Todo file handler is saving and then reading correctly. Only the counter is not working.
-
                     file.writeAsObject(collection.list);
                     System.out.println("Bye. See you later alligator!");
                     hasFinished = true;
                 }
             }
-
         }
-
     }
 }
 

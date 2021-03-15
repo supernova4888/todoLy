@@ -35,6 +35,7 @@ public class TaskList implements Serializable {
     }
 
 
+    /** Retrieves user selection and sorts the list according to user choice and delegates the sorting function to the TaskComparator Class. List can be sorted by due date or project name. */
     public void sort(int sortSelection)
     {
         TaskComparator comp = new TaskComparator('d');
@@ -74,9 +75,7 @@ public class TaskList implements Serializable {
     }
 
 
-
     /** Count total of tasks open that will be updated as the users interacts with the app*/
-
     public int[] countTasks()
     {
         // 'open' Task = false : All tasks are created with 'open' status
