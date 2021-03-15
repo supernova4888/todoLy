@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9574974-747d-4465-978c-9ff0c8d9e2ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/todolistmaster/UserInterfaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/todolistmaster/UserInterfaceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/objectFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/objectFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +66,7 @@
       <recent name="todolistmaster" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TaskListTest.returnCorrectMessageWhenDisplayTaskWithIndexIsAppliedToEmptyList">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="todolistmaster.Main" />
       <module name="todolistmaster.app.main" />

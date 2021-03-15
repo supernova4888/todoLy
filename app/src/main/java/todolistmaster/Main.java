@@ -13,16 +13,6 @@ public class Main {
         UserInterface app = new UserInterface();
         app.run();
 
-       /* ArrayList<Task> list = new ArrayList<>();
-
-        Task t1 = new Task();
-        Task t2 = new Task();
-
-        list.add(t1);
-        list.add(t2);*/
-
-
-
 
     }
 }
