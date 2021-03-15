@@ -32,7 +32,19 @@ application {
     mainClass = 'todolistmaster.App'
 }
 
-tasks.named('test') {
-    // Use junit platform for unit tests.
+/*sourceSets{
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}*/
+
+test{
     useJUnitPlatform()
 }
+
+/*tasks.named('test') {
+    // Use junit platform for unit tests.
+    useJUnitPlatform()
+}*/

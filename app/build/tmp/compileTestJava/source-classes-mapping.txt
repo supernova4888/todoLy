@@ -1,2 +1,6 @@
-todolistmaster/AppTest.java
- todolistmaster.AppTest
+todolistmaster/UserInterfaceTest.java
+ todolistmaster.UserInterfaceTest
+todolistmaster/TaskComparatorTest.java
+ todolistmaster.TaskComparatorTest
+todolistmaster/TaskListTest.java
+ todolistmaster.TaskListTest

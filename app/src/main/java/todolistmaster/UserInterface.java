@@ -7,11 +7,8 @@ import java.util.Scanner;
 
 
 /***
- This is where all the messages to be displayed, user command, command validation will occur.
- Everything related to scanner will also be in this Class. In other words this class is the central interface between
- the user and the command execution*/
+ This is where all the messages to the user are displayed, user command and command validation are handled by this Class. In other words all methods related to scanner will be in this Class. This class is the central interface between the user and the commands validation and execution*/
 
-// TODO loop the app and allow for adding tasks, editing, etc. without crashing. See method #printmenu
 
 public class UserInterface implements Serializable
 {

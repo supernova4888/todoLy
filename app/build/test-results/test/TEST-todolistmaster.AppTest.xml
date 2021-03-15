@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="todolistmaster.AppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-01T10:23:55" hostname="SDA-Lund-50-mbpro" time="0.02">
-  <properties/>
-  <testcase name="appHasAGreeting()" classname="todolistmaster.AppTest" time="0.02"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

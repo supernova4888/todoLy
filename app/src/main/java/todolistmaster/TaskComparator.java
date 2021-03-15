@@ -1,6 +1,10 @@
 package todolistmaster;
 import java.util.Comparator;
 
+
+/**
+ This class executes the task sorting per project and per due date according to User Command.*/
+
 public class TaskComparator implements Comparator<Task>
 {
 
@@ -22,13 +26,8 @@ public class TaskComparator implements Comparator<Task>
             case 'p':
                 return t1.getProjectName().toLowerCase().compareTo(t2.getProjectName().toLowerCase());
         }
-        // check if it can be excluded later
         System.out.println("retuning the default based on title");
         return t1.getTitle().toLowerCase().compareTo(t2.getTitle().toLowerCase());
-
     }
-
-
-
 
 }

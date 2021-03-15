@@ -3,8 +3,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
-// Class Task represents one task and all its fields. Several tasks will compose an ArrayList, which is in the Todolist class
- All methods related to the task belong here: create task, change fields, convert a task with all its fields to string
+// Class Task represents one task and all its fields. Several tasks will compose an ArrayList, which is represented by the TaskList custom class
+ All methods related to the attributes of a task object belong here: fields, getters and setters.
 */
 public class Task implements Serializable {
 

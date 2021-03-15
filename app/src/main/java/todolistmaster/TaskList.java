@@ -4,7 +4,7 @@ import java.util.*;
 
 
 /**
- This class represent a collection of tasks (list). All methods related to manipulation of the list should be here: remove task from an ArrayList, add new task to the list, sort tasks in the list per project and per date
+ This class represent a list of tasks. All methods related to manipulation of the list should be here: remove task from the list, add new task to the list, sort tasks in the list per project and per date
 */
 
 // TODO need to continue working on structuring this class.
@@ -20,12 +20,10 @@ public class TaskList implements Serializable {
         list.add(task);
     }
 
-
+    /** Checks if list is empty, if yes returns 0, else returns 1 */
     public int showTaskListWithoutIndex()
     {
         // for all items in the list, loop
-        System.out.println("in showTaskList");
-
         if (list.size() == 0) {
             return 0;
         }
@@ -37,11 +35,11 @@ public class TaskList implements Serializable {
     }
 
 
-    public void sort(int x)
+    public void sort(int sortSelection)
     {
         TaskComparator comp = new TaskComparator('d');
 
-        if (x == 2) {
+        if (sortSelection == 2) {
             comp = new TaskComparator('p');
         }
         Collections.sort(list, comp);
@@ -66,7 +64,7 @@ public class TaskList implements Serializable {
         }
     }
 
-    // todo: NEW 14/march, needs to be checked
+
     public Task getTaskAtIndex(int taskIndex) {
 
         Task taskToEdit;
@@ -79,7 +77,6 @@ public class TaskList implements Serializable {
 
     /** Count total of tasks open that will be updated as the users interacts with the app*/
 
-    //todo: check if this is incorporated correctly in the count tasks menu (and after each user interaction)
     public int[] countTasks()
     {
         // 'open' Task = false : All tasks are created with 'open' status
