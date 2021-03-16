@@ -16,7 +16,7 @@ class UserInterfaceTest {
     void addTask() {
 
     // emulate adding 1 task to Tasklist
-        
+
 
     }
 
