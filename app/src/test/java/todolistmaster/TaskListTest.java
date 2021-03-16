@@ -2,10 +2,33 @@ package todolistmaster;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 // assertNotEquals - method
 
 
 class TaskListTest {
+
+
+    // todo: how to test this one?
+    @Test
+    void assertAddTaskForOrderAgnosticEquality_ReturnsTrue() {
+
+
+        Task t1 = new Task("firsttask", LocalDate.now(), "Brussels project");
+
+        TaskList testListActual = new TaskList();
+        TaskList testListExpected = new TaskList();
+
+        testListActual.addToList(t1);
+        testListExpected.addToList(t1);
+
+        assertEquals(testListExpected, testListActual);
+
+        //assertTrue(testListActual.containsAll(testListExpected) && testListExpected.containsAll(testListActual));
+    }
 
 
     @Test
@@ -24,7 +47,6 @@ class TaskListTest {
 
 
         // testing if empty TaskList returns 1
-
         TaskList testListActual = new TaskList();
         TaskList testListExpected = new TaskList();
 
@@ -53,23 +75,23 @@ class TaskListTest {
        testListActual.addToList(t2);
        testListActual.addToList(t3);
 
-        TaskList testListExpected = new TaskList();
+       TaskList testListExpected = new TaskList();
 
-        testListExpected.addToList(t1);
-        testListExpected.addToList(t2);
         testListExpected.addToList(t3);
+        testListExpected.addToList(t2);
+        testListExpected.addToList(t1);
 
+        testListActual.sort(2);
+        testListExpected.sort(2);
 
-       // todo: just to check which assertion i should call
+       // todo: just to check which assertion i should call - returning void?
 
-       //Assertions.assertEquals(testListExpected.sort(2), testListActual.sort(2));
+       // Assertions.assertTrue(testListExpected.sort(2), testListActual.sort(2));
 
     }
 
     @Test
     void returnCorrectMessageWhenDisplayTaskWithIndexIsAppliedToEmptyList() {
-
-        // todo: PASSED - is testing like this correct?
 
         TaskList testListActual = new TaskList();
         TaskList testListExpected = new TaskList();
@@ -77,13 +99,13 @@ class TaskListTest {
         testListExpected.showTaskListWithoutIndex();
 
         Assertions.assertEquals("Your task list is empty", testListActual.displayTaskWithIndex());
-
     }
+
 
     @Test
     void returnCorrectOutputWhenDisplayTaskWithIndexIsNotEmptyList() {
 
-        // todo: how do i test for this one with stringbuilder?
+        // todo: PASSED - is this correct?
 
         TaskList testListActual = new TaskList();
         TaskList testListExpected = new TaskList();
@@ -93,9 +115,7 @@ class TaskListTest {
         testListActual.addToList(t1);
         testListExpected.addToList(t1);
 
-        // call the method here for actual and expected.
-        // double check the return type and Assertion type
-        //Assertions.assertEquals(
+        assertEquals(testListExpected.displayTaskWithIndex(), testListActual.displayTaskWithIndex());
 
     }
 

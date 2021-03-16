@@ -1,24 +1,14 @@
 package todolistmaster;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
-
-import java.util.concurrent.TimeUnit;
+import java.time.LocalDate;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class UserInterfaceTest {
 
 //todo: check with TA's if the rational here is correct
 
-
-    @Test
-    void addTask() {
-
-    // create a TaskList, create task then call the method to add the task to the list
-    // return void, so use Assertion with void.
-
-
-    }
 
     @Test
     void editTaskMenu() {
@@ -32,19 +22,12 @@ class UserInterfaceTest {
     @Test
     void validateIntCheckIfNumberWithinRangeIsReturnedCorrectly() {
 
-
         UserInterface ui = new UserInterface();
-
-        // Test for "Hello world"
-
         int min = 123;
         int max = 231;
         String userInput = "200";
         ui.setUserInput(userInput);
-
         Assertions.assertEquals(Integer.parseInt(userInput), ui.validateInt(min, max));
-
-
     }
 
     // Udalak will continue to think about this one. Very difficult.

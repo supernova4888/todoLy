@@ -101,4 +101,10 @@ public class TaskList implements Serializable {
     public void removeTask(Task t) {
         list.remove(t);
     }
+
+    // For testing only
+    public boolean containsAll(TaskList listOne) {
+        TaskList listTwo = new TaskList();
+        return listOne.containsAll(listTwo);
+    }
 }

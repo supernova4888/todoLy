@@ -16,15 +16,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.3/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.3/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/reports/tests/test/classes/todolistmaster.TaskListTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/reports/tests/test/classes/todolistmaster.UserInterfaceTest.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/reports/tests/test/packages/todolistmaster.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/reports/tests/test/packages/todolistmaster.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/resources/main/objectFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/resources/main/objectFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/test-results/test/TEST-todolistmaster.TaskListTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/test-results/test/TEST-todolistmaster.UserInterfaceTest.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/tmp/compileTestJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileTestJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/todolistmaster/TaskListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/todolistmaster/TaskListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/todolistmaster/UserInterfaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/todolistmaster/UserInterfaceTest.java" afterDir="false" />
     </list>
@@ -84,13 +83,13 @@
       <recent name="todolistmaster" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.UserInterfaceTest.validateInt">
-    <configuration name="TaskListTest.returnCorrectMessageWhenDisplayTaskWithIndexIsAppliedToEmptyList" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.TaskListTest.returnCorrectOutputWhenDisplayTaskWithIndexIsNotEmptyList">
+    <configuration name="TaskListTest.assertAddTaskForOrderAgnosticEquality_ReturnsTrue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;todolistmaster.TaskListTest.returnCorrectMessageWhenDisplayTaskWithIndexIsAppliedToEmptyList&quot;" />
+        <option name="scriptParameters" value="--tests &quot;todolistmaster.TaskListTest.assertAddTaskForOrderAgnosticEquality_ReturnsTrue&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -106,12 +105,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TaskListTest.sortPerProjectSortsCorrectly" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TaskListTest.returnCorrectOutputWhenDisplayTaskWithIndexIsNotEmptyList" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;todolistmaster.TaskListTest.sortPerProjectSortsCorrectly&quot;" />
+        <option name="scriptParameters" value="--tests &quot;todolistmaster.TaskListTest.returnCorrectOutputWhenDisplayTaskWithIndexIsNotEmptyList&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -127,12 +126,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TaskListTest.testsCorrectReturnValueWhenShowTaskListWithoutIndexIsNotEmpty" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UserInterfaceTest.assertAddTaskForOrderAgnosticEquality_ReturnsTrue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;todolistmaster.TaskListTest.testsCorrectReturnValueWhenShowTaskListWithoutIndexIsNotEmpty&quot;" />
+        <option name="scriptParameters" value="--tests &quot;todolistmaster.UserInterfaceTest.assertAddTaskForOrderAgnosticEquality_ReturnsTrue&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -192,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TaskListTest.returnCorrectOutputWhenDisplayTaskWithIndexIsNotEmptyList" />
+        <item itemvalue="Gradle.TaskListTest.assertAddTaskForOrderAgnosticEquality_ReturnsTrue" />
+        <item itemvalue="Gradle.UserInterfaceTest.assertAddTaskForOrderAgnosticEquality_ReturnsTrue" />
         <item itemvalue="Gradle.UserInterfaceTest.validateInt" />
         <item itemvalue="Gradle.UserInterfaceTest.validateIntFromString" />
-        <item itemvalue="Gradle.TaskListTest.sortPerProjectSortsCorrectly" />
-        <item itemvalue="Gradle.TaskListTest.returnCorrectMessageWhenDisplayTaskWithIndexIsAppliedToEmptyList" />
-        <item itemvalue="Gradle.TaskListTest.testsCorrectReturnValueWhenShowTaskListWithoutIndexIsNotEmpty" />
       </list>
     </recent_temporary>
   </component>
