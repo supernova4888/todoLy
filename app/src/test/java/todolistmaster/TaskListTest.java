@@ -2,8 +2,6 @@ package todolistmaster;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 // assertNotEquals - method
@@ -12,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class TaskListTest {
 
 
-    // todo: how to test this one?
+    // todo: how to test this one? keep 'add' and delete 'sort'
+
     @Test
     void assertAddTaskForOrderAgnosticEquality_ReturnsTrue() {
 
@@ -103,9 +102,7 @@ class TaskListTest {
 
 
     @Test
-    void returnCorrectOutputWhenDisplayTaskWithIndexIsNotEmptyList() {
-
-        // todo: PASSED - is this correct?
+    void returnCorrectOutputWhenDisplayTaskWithIndexHasOneTask() {
 
         TaskList testListActual = new TaskList();
         TaskList testListExpected = new TaskList();
@@ -116,7 +113,5 @@ class TaskListTest {
         testListExpected.addToList(t1);
 
         assertEquals(testListExpected.displayTaskWithIndex(), testListActual.displayTaskWithIndex());
-
     }
-
 }

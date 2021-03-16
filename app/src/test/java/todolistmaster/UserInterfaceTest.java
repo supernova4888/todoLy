@@ -11,15 +11,6 @@ class UserInterfaceTest {
 
 
     @Test
-    void editTaskMenu() {
-
-        // do 6 test cases invidually.
-
-
-
-    }
-
-    @Test
     void validateIntCheckIfNumberWithinRangeIsReturnedCorrectly() {
 
         UserInterface ui = new UserInterface();
@@ -35,7 +26,6 @@ class UserInterfaceTest {
    /* @Test
     void validateIntFromString() {
 
-        // TODO this one is important to test a) min input b) max input c) invalid input as string
 
         // give a number out of the range
         // then return to the function
