@@ -11,9 +11,6 @@ This is where all the transactions with the file will occur: open, read, write, 
 public class FileHandler implements Serializable {
 
 
-    // fields
-    // Using txt file and absolute path
-
     private static final String path = "app/src/main/resources/";
 
 

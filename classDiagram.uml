@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>todolistmaster</OriginalElement>
+  <nodes>
+    <node x="239.42129629629628" y="180.0">todolistmaster.TaskList</node>
+    <node x="168.0" y="100.0">todolistmaster.TaskComparator</node>
+    <node x="112.0" y="340.0">todolistmaster.Main</node>
+    <node x="237.0" y="415.0">todolistmaster.UserInterfaceTest</node>
+    <node x="247.44907407407408" y="0.0">todolistmaster.Task</node>
+    <node x="0.0" y="415.0">todolistmaster.TaskComparatorTest</node>
+    <node x="75.99999999999997" y="260.0">todolistmaster.UserInterface</node>
+    <node x="293.0046296296296" y="260.0">todolistmaster.TaskListTest</node>
+    <node x="0.0" y="180.0">todolistmaster.FileHandler</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="todolistmaster.UserInterface" target="todolistmaster.FileHandler">
+      <point x="-63.333333333333314" y="-15.0" />
+      <point x="88.66666666666666" y="240.0" />
+      <point x="34.0" y="240.0" />
+      <point x="-34.0" y="15.0" />
+    </edge>
+    <edge source="todolistmaster.UserInterface" target="todolistmaster.TaskList">
+      <point x="38.0" y="-15.0" />
+      <point x="189.99999999999997" y="230.0" />
+      <point x="253.42129629629628" y="230.0" />
+      <point x="-42.0" y="15.0" />
+    </edge>
+    <edge source="todolistmaster.TaskComparator" target="todolistmaster.Task">
+      <point x="2.8421709430404007E-14" y="-15.0" />
+      <point x="248.0" y="80.0" />
+      <point x="282.4490740740741" y="80.0" />
+      <point x="-5.0" y="15.0" />
+    </edge>
+    <edge source="todolistmaster.TaskList" target="todolistmaster.Task">
+      <point x="42.0" y="-15.0" />
+      <point x="337.4212962962963" y="160.0" />
+      <point x="364.27777777777777" y="160.0" />
+      <point x="364.27777777777777" y="70.0" />
+      <point x="302.4490740740741" y="70.0" />
+      <point x="15.0" y="15.0" />
+    </edge>
+    <edge source="todolistmaster.TaskList" target="todolistmaster.TaskComparator">
+      <point x="-42.0" y="-15.0" />
+      <point x="253.42129629629628" y="160.0" />
+      <point x="208.0" y="160.0" />
+      <point x="-40.0" y="15.0" />
+    </edge>
+    <edge source="todolistmaster.Main" target="todolistmaster.UserInterface">
+      <point x="-20.000000000000014" y="-15.0" />
+      <point x="132.0" y="315.0" />
+      <point x="113.99999999999997" y="315.0" />
+      <point x="-38.0" y="15.0" />
+    </edge>
+    <edge source="todolistmaster.UserInterface" target="todolistmaster.Task">
+      <point x="12.666666666666671" y="-15.0" />
+      <point x="164.66666666666663" y="240.0" />
+      <point x="157.5" y="240.0" />
+      <point x="157.5" y="70.0" />
+      <point x="272.4490740740741" y="70.0" />
+      <point x="-15.0" y="15.0" />
+    </edge>
+    <edge source="todolistmaster.FileHandler" target="todolistmaster.Task">
+      <point x="0.0" y="-15.0" />
+      <point x="68.0" y="50.0" />
+      <point x="252.44907407407408" y="50.0" />
+      <point x="-35.0" y="15.0" />
+    </edge>
+    <edge source="todolistmaster.TaskListTest" target="todolistmaster.Task">
+      <point x="54.0" y="-15.0" />
+      <point x="419.0046296296296" y="240.0" />
+      <point x="390.75" y="240.0" />
+      <point x="390.75" y="50.0" />
+      <point x="322.4490740740741" y="50.0" />
+      <point x="35.0" y="15.0" />
+    </edge>
+    <edge source="todolistmaster.TaskListTest" target="todolistmaster.TaskList">
+      <point x="-54.0" y="-15.0" />
+      <point x="311.0046296296296" y="240.0" />
+      <point x="309.4212962962963" y="240.0" />
+      <point x="14.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="181.0" y="165.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

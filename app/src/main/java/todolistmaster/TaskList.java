@@ -7,7 +7,7 @@ import java.util.*;
  This class represent a list of tasks. All methods related to manipulation of the list should be here: remove task from the list, add new task to the list, sort tasks in the list per project and per date
 */
 
-// TODO need to continue working on structuring this class.
+
 
 public class TaskList implements Serializable {
 
@@ -102,11 +102,5 @@ public class TaskList implements Serializable {
 
     public void removeTask(Task t) {
         list.remove(t);
-    }
-
-    // For testing only
-    public boolean containsAll(TaskList listOne) {
-        TaskList listTwo = new TaskList();
-        return listOne.containsAll(listTwo);
     }
 }

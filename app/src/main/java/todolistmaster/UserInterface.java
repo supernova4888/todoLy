@@ -19,7 +19,6 @@ public class UserInterface implements Serializable
     // Object of type 'TaskList'. TaskList is a custom object of type ArrayList that holds the Task objects.
     private final TaskList collection = new TaskList();
 
-    private String userInput; // null
 
 
     public void printWelcome()
@@ -29,16 +28,9 @@ public class UserInterface implements Serializable
     }
 
 
-    // Testing only
-    public void setUserInput(String input)
-    {
-        this.userInput = input;
-    }
-
-
     public void printStatus()
     {
-        int [] taskCounts = collection.countTasks();
+        int[] taskCounts = collection.countTasks();
         System.out.println("You have " + taskCounts[0] + " tasks open, " + taskCounts[1] + " tasks closed.");
     }
 
@@ -49,7 +41,7 @@ public class UserInterface implements Serializable
         // All options except "edit" returns to the main menu after execution
         System.out.println("(1) Show Task List (by date or project)");
         System.out.println("(2) Add New Task");
-        System.out.println("(3) Edit Task (update, mark as done, remove) or return to Main Menu");
+        System.out.println("(3) Edit Task (mark as done, remove, update) or return to Main Menu");
         System.out.println("(4) Save and Quit");
 
         // this method connects  to the one below
@@ -63,9 +55,9 @@ public class UserInterface implements Serializable
         System.out.println("Pick an editing option: ");
         System.out.println("(1) Mark as closed");
         System.out.println("(2) Remove");
-        System.out.println("(3) Update field - Title -");
-        System.out.println("(4) Update field - Due Date -");
-        System.out.println("(5) Update field - Project Name -");
+        System.out.println("(3) Update field: Title");
+        System.out.println("(4) Update field: Due Date");
+        System.out.println("(5) Update field: Project Name");
         System.out.println("(6) Changed my mind, return to Main Menu");
     }
 
@@ -92,7 +84,7 @@ public class UserInterface implements Serializable
         }
     }
 
-
+    /** Takes user input and adds a new task to the list*/
     public void addTask()
     {
         System.out.println("Write a title for your task:");
@@ -113,13 +105,11 @@ public class UserInterface implements Serializable
         printStatus();
     }
 
-
+    /*** Validates the dateLocalDate inserted by user, transforms to LocalDate type and passes to the @param: dateLocalDate */
     public LocalDate getStringDateSetLocalDate() {
 
-    // Validates the dateLocalDate inserted by user, transforms to LocalDate type and passes to the @param: dateLocalDate */
-
         String dueDate;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate dateLocalDate = null;
         boolean success = true;
         while (success) {
@@ -130,12 +120,15 @@ public class UserInterface implements Serializable
                 success = false;
 
             } catch (DateTimeParseException e) {
-                System.out.println("The value for dateLocalDate, month or year is invalid");
+                System.out.println("The value for is invalid. Please use the yyyy/MM/dd format.");
             }
         }
         return dateLocalDate;
     }
 
+
+    /**Takes in user input and executes the edit functions: mark as done, remove, update fields (title, due date and project name)
+    */
     public void editTaskMenu() {
 
         // display tasks
@@ -174,7 +167,7 @@ public class UserInterface implements Serializable
                 System.out.println("Title updated to: " + newTitle);
             }
             case 4 -> {
-                System.out.println("Write a new Due Date for this task");
+                System.out.println("Write a new Due Date (yyyy/MM/dd) for this task");
                 LocalDate newDate = getStringDateSetLocalDate();
                 taskToEdit.setDueDate(newDate);
                 System.out.println("Due Date updated to: " + newDate);
@@ -204,22 +197,19 @@ Validates user input based on dynamic min and max int. It also catches exception
         {
             try
             {
-                if (userInput == null)
-                    userInput = scanner.nextLine();
+                int userInput = Integer.parseInt(scanner.nextLine());
 
-                int userInt = Integer.parseInt(userInput);
-
-                if (userInt < min) {
+                if (userInput < min) {
                     System.out.println("You entered a number below" + min +"Please enter a number between" + min + "-" + max + ", inclusive");
                     System.out.println("Please try again");
                     continue;
                 }
-                if (userInt > max) {
+                if (userInput > max) {
                     System.out.println("You entered a number above" + max + "Please enter a number between" + min + "-" + max + ", inclusive");
                     System.out.println("Please try again");
                     continue;
                 }
-                return userInt;
+                return userInput;
             }
             // catch if they enter string or other wrong format rather than a valid int
             catch(NumberFormatException e )
