@@ -11,16 +11,11 @@ class TaskListTest {
     @Test
     void testsCorrectReturnValueWhenShowTaskListWithoutIndexIsEmpty() {
 
-        // todo: PASSED - is testing like this correct?
-
-        // if list is empty return 0
-
+        // testing if empty TaskList returns 0
         TaskList testListActual = new TaskList();
         TaskList testListExpected = new TaskList();
 
-        testListExpected.showTaskListWithoutIndex();
-
-        Assertions.assertEquals(0, testListActual.showTaskListWithoutIndex());
+        Assertions.assertEquals(testListExpected.showTaskListWithoutIndex(), testListActual.showTaskListWithoutIndex());
 
     }
 
@@ -28,7 +23,7 @@ class TaskListTest {
     void testsCorrectReturnValueWhenShowTaskListWithoutIndexIsNotEmpty() {
 
 
-        // todo: PASSED - is testing like this correct?
+        // testing if empty TaskList returns 1
 
         TaskList testListActual = new TaskList();
         TaskList testListExpected = new TaskList();
@@ -39,7 +34,7 @@ class TaskListTest {
 
         testListExpected.addToList(t1);
 
-        Assertions.assertEquals(1, testListActual.showTaskListWithoutIndex());
+        Assertions.assertEquals(testListExpected.showTaskListWithoutIndex(), testListActual.showTaskListWithoutIndex());
 
     }
 
@@ -65,10 +60,9 @@ class TaskListTest {
         testListExpected.addToList(t3);
 
 
-       testListActual.sort(2);
-       testListExpected.sort(2);
+       // todo: just to check which assertion i should call
 
-       Assertions.assertEquals(testListExpected, testListActual);
+       //Assertions.assertEquals(testListExpected.sort(2), testListActual.sort(2));
 
     }
 
@@ -99,7 +93,9 @@ class TaskListTest {
         testListActual.addToList(t1);
         testListExpected.addToList(t1);
 
-        //Assertions.assertEquals("(1) ", testListActual.showTaskListWithoutIndex());
+        // call the method here for actual and expected.
+        // double check the return type and Assertion type
+        //Assertions.assertEquals(
 
     }
 

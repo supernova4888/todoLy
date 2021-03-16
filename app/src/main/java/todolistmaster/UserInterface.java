@@ -19,11 +19,20 @@ public class UserInterface implements Serializable
     // Object of type 'TaskList'. TaskList is a custom object of type ArrayList that holds the Task objects.
     private final TaskList collection = new TaskList();
 
+    private String userInput; // null
+
 
     public void printWelcome()
     {
         System.out.println();
         System.out.println("Welcome to ToDoLy");
+    }
+
+
+    // Testing only
+    public void setUserInput(String input)
+    {
+        this.userInput = input;
     }
 
 
@@ -129,9 +138,8 @@ public class UserInterface implements Serializable
 
     public void editTaskMenu() {
 
-        // Step 1. display tasks
+        // display tasks
         System.out.println(collection.displayTaskWithIndex());
-        // Step 2. ask user to type number of task she wants to edit
         System.out.println("Pick the number representing the task you want to edit: ");
 
         // get the index of the task after validating the user input and store in @param: taskIndex
@@ -190,25 +198,28 @@ Validates user input based on dynamic min and max int. It also catches exception
  @param max: max integer of a set of options displayed to user
  */
 
-// i should create one for each type. ValidateInt for user options. I need a validateString for ???
     public int validateInt(int min, int max)
     {
         while(true)
         {
             try
             {
-                int userInput = Integer.parseInt(scanner.nextLine());
+                if (userInput == null)
+                    userInput = scanner.nextLine();
 
-                if (userInput < min) {
+                int userInt = Integer.parseInt(userInput);
+
+                if (userInt < min) {
                     System.out.println("You entered a number below" + min +"Please enter a number between" + min + "-" + max + ", inclusive");
+                    System.out.println("Please try again");
                     continue;
                 }
-                if (userInput > max) {
+                if (userInt > max) {
                     System.out.println("You entered a number above" + max + "Please enter a number between" + min + "-" + max + ", inclusive");
+                    System.out.println("Please try again");
                     continue;
                 }
-                return userInput;
-                // todo: do i need to 'exit' the while loop or this is enough?
+                return userInt;
             }
             // catch if they enter string or other wrong format rather than a valid int
             catch(NumberFormatException e )
