@@ -11,6 +11,8 @@ The user can execute several commands by inserting the corresponding command num
 
 I hope you have fun using todoLy!
 
+#### Class Diagram: 
+To access it check the file "classDiagram.uml". To see the dependencies, right-click and select "Show dependencies"
 
 ### How to use the program
 
@@ -31,4 +33,5 @@ I hope you have fun using todoLy!
 2. Operation of the todoLy app 
 
    ![OPERATION](SC2.png "SC1")
+
 
