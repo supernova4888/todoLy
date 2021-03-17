@@ -90,7 +90,7 @@ public class UserInterface implements Serializable
         System.out.println("Write a title for your task:");
         String title = (scanner.nextLine());
 
-        System.out.println("Write a date in format DD/MM/YYYY for your task");
+        System.out.println("Write a date in format yyyy/MM/dd for your task");
         LocalDate date1 = getStringDateSetLocalDate();
 
         System.out.println("Write a Project for your task:");
