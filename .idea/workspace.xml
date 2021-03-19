@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c9574974-747d-4465-978c-9ff0c8d9e2ce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/TaskList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/todolistmaster/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todofile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/todolistmaster/TaskListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/todolistmaster/TaskListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +82,7 @@
       <recent name="todolistmaster" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Gradle.TaskListTest.sortPerProjectSortsCorrectly">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="todolistmaster.Main" />
       <module name="todolistmaster.app.main" />
@@ -101,13 +96,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,12 +151,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TaskListTest.returnCorrectOutputWhenDisplayTaskWithIndexIsNotEmptyList" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TaskListTest.sortPerProjectSortsCorrectly" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;todolistmaster.TaskListTest.returnCorrectOutputWhenDisplayTaskWithIndexIsNotEmptyList&quot;" />
+        <option name="scriptParameters" value="--tests &quot;todolistmaster.TaskListTest.sortPerProjectSortsCorrectly&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -198,11 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.UserInterfaceTest.validateIntCheckIfNumberWithinRangeIsReturnedCorrectly" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Gradle.TaskListTest.sortPerProjectSortsCorrectly" />
         <item itemvalue="Gradle.TaskListTest.assertAddTaskForOrderAgnosticEquality_ReturnsTrue" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Gradle.UserInterfaceTest.validateIntCheckIfNumberWithinRangeIsReturnedCorrectly" />
         <item itemvalue="Gradle.TaskListTest.returnCorrectCountForList" />
-        <item itemvalue="Gradle.TaskListTest.returnCorrectOutputWhenDisplayTaskWithIndexIsNotEmptyList" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +213,8 @@
       <updated>1614954675668</updated>
       <workItem from="1615919690631" duration="4142000" />
       <workItem from="1615976396554" duration="406000" />
-      <workItem from="1616157675878" duration="3229000" />
+      <workItem from="1616157675878" duration="3326000" />
+      <workItem from="1616164927625" duration="6315000" />
     </task>
     <servers />
   </component>
@@ -234,5 +232,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/todolistmaster$Main.ic" NAME="Main Coverage Results" MODIFIED="1616165036224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>todolistmaster.*</FILTER>
+    </SUITE>
   </component>
 </project>
