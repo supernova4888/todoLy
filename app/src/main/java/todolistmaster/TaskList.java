@@ -4,7 +4,7 @@ import java.util.*;
 
 
 /**
- This class represent a list of tasks. All methods related to manipulation of the list should be here: remove task from the list, add new task to the list, sort tasks in the list per project and per date
+ This class represent a list of tasks. All custom methods related to manipulation of the list are here: remove task from the list, add new task to the list, sort tasks in the list per project and per date
 */
 
 
@@ -68,6 +68,9 @@ public class TaskList implements Serializable {
     }
 
 
+    /**
+     Based on the user selection after displayTaskWithIndex method, this method gets the selected task by mapping back to its index.
+     */
     public Task getTaskAtIndex(int taskIndex) {
 
         Task taskToEdit;
@@ -77,7 +80,8 @@ public class TaskList implements Serializable {
     }
 
 
-    /** Count total of tasks open that will be updated as the users interacts with the app*/
+    /** Count total of tasks open and closed that will be updated as the users interacts with the app (e.g. add new task)
+     */
     public int[] countTasks()
     {
         // 'open' Task = false : All tasks are created with 'open' status

@@ -3,18 +3,12 @@ import java.io.*;
 import java.util.ArrayList;
 
 /***
-This is where all the transactions with the file will occur: open, read, write, save and close.
- There should also be a counter of 'open' and 'closed' tasks which should return a status to display (not sure if this should
- be here or somewhere else)
- The aim is to save as Object in a txt file*/
+This is where all the transactions with the file will occur: open, read, write, save and close. The aim is to save as Object in a txt file*/
 
 public class FileHandler implements Serializable {
 
 
     private static final String path = "app/src/main/resources/";
-
-
-//TODO to be tested - check the unchecked cast
 
     public void writeAsObject(ArrayList<Task> list)
     {

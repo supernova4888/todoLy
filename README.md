@@ -16,9 +16,9 @@ To access it check the file "classDiagram.uml". To see the dependencies, right-c
 
 ### How to use the program
 
-1. Download the todoLy src code
+1. Download or clone the todoLy src code on this  [GitHub](https://github.com/supernova4888/todoLy) repo.
 2. Open the source on an IDE (or Gradle) of your choice that supports Java
-3. Navigate to Main.java
+3. Navigate to the Main.java tab (or complie and run through the terminal)
 4. Run Main.java
 5. Interact and use todoLy app on the terminal
 

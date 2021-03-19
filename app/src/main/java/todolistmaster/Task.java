@@ -8,10 +8,15 @@ import java.time.LocalDate;
 */
 public class Task implements Serializable {
 
-    // attributes of one Task
+    // attributes of Task
+
+    // title of a task represent a short description of the task
     private String title;
+    // represents the project related to the task: personal, work, school...
     private String projectName;
+    // represents the status open or closed. New tasks are created with status open by default
     private boolean taskStatus;
+    // represents the due date of when the task must be completed
     private LocalDate date;
 
 

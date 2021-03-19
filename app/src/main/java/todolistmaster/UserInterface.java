@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 
 /***
- This is where all the messages to the user are displayed, user command and command validation are handled by this Class. In other words all methods related to scanner will be in this Class. This class is the central interface between the user and the commands validation and execution*/
+ This is where all the user interaction related fields and methods are, for example displayed messages, user command and user command validation. This means that all methods related to scanner will be in this Class.*/
 
 
 public class UserInterface implements Serializable
@@ -60,8 +60,9 @@ public class UserInterface implements Serializable
         System.out.println("(5) Update field: Project Name");
         System.out.println("(6) Changed my mind, return to Main Menu");
     }
-
-
+    /**
+    show existing tasks and asks user if they would like the tasks to be displayed by project or dueDate
+    */
     public void showTask()
     {
         System.out.println("in ShowTask");
@@ -218,8 +219,8 @@ Validates user input based on dynamic min and max int. It also catches exception
             }
         }
     }
-
-
+    /**
+    Make sure the todoLy app runs until user selects the save and quit option.*/
     public void run() {
 
         boolean hasFinished = false;
