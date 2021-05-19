@@ -5,10 +5,9 @@
   <nodes>
     <node x="239.4212962962963" y="180.0">todolistmaster.TaskList</node>
     <node x="168.0" y="100.0">todolistmaster.TaskComparator</node>
-    <node x="112.0" y="340.0">todolistmaster.Main</node>
     <node x="237.0" y="415.0">todolistmaster.UserInterfaceTest</node>
+    <node x="112.0" y="340.0">todolistmaster.Main</node>
     <node x="247.44907407407408" y="0.0">todolistmaster.Task</node>
-    <node x="0.0" y="415.0">todolistmaster.TaskComparatorTest</node>
     <node x="76.0" y="260.0">todolistmaster.UserInterface</node>
     <node x="293.0046296296296" y="260.0">todolistmaster.TaskListTest</node>
     <node x="0.0" y="180.0">todolistmaster.FileHandler</node>
